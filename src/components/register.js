@@ -6,7 +6,7 @@ function register(navigateTo) {
   const menssageRegisterRouter = document.createElement('h2');
   menssageRegisterRouter.className = 'menssageRegisterRouter';
   //Registro del correo y constraseña
-  const infoRegister = document.createElement('div');
+  const infoRegister = document.createElement('form');
   infoRegister.className = 'infoRegister';
   const emailRegister = document.createElement('input');
   emailRegister.className = 'emailRegister';
@@ -18,11 +18,12 @@ function register(navigateTo) {
   checkPasswordRegister.className = 'checkPasswordRegister';
   checkPasswordRegister.type = 'password';
   //Boton de guardar
-  const buttonSaveInformation = document.createElement('button');
-  buttonSaveInformation.className = 'buttonSaveInformation';
-  buttonSaveInformation.addEventListener('click', () => {
+  const btnSaveInformation = document.createElement('button');
+  btnSaveInformation.className = 'buttonSaveInformation';
+  btnSaveInformation.type = 'submit';
+  /*btnSaveInformation.addEventListener('click', () => {
     navigateTo('/login');
-  });
+  });*/
   //Iconos
   const iconEmail = document.createElement('div');
   iconEmail.className = 'iconEmail1';
@@ -33,10 +34,14 @@ function register(navigateTo) {
   emailRegister.placeholder = 'Iniciar sesión';
   passwordRegister.placeholder = 'Contraseña';
   checkPasswordRegister.placeholder = 'Repetir contraseña';
-  buttonSaveInformation.textContent = 'Guardar';
+  btnSaveInformation.textContent = 'Guardar';
 
-  registerDiv.append(imgRegister, menssageRegisterRouter, infoRegister, buttonSaveInformation);
-  infoRegister.append(emailRegister, passwordRegister, checkPasswordRegister);
+  const formRegister = register(document.getElementsByClassName('infoRegister')).lastChild;
+  formRegister.addEventListener('submit', (e) => {
+    e.preventDefault();
+  })
+  registerDiv.append(imgRegister, menssageRegisterRouter, infoRegister);
+  infoRegister.append(emailRegister, passwordRegister, checkPasswordRegister, btnSaveInformation);
   emailRegister.appendChild(iconEmail);
   passwordRegister.appendChild(iconPassword);
   checkPasswordRegister.appendChild(iconPassword);

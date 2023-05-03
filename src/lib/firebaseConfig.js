@@ -53,8 +53,23 @@ export const updateTask = (id, newDates) => updateDoc(doc(db, 'post', id), newDa
 
 // Initialize Realtime Database and get a reference to the service
 // export const likesRef = (id) => database.ref(`posts/${id}/likes`);
-export const ref = database.ref('ruta/a/tu/dato');
+/* export const ref = database.ref('ruta/a/tu/dato');
 ref.set({
   dato1: 'valor1',
   dato2: 'valor2',
-});
+}); */
+
+export const getDate = () => {
+  let today = new Date();
+  let dd = today.getDate();
+  let mm = today.getMonth() + 1;
+  const yyyy = today.getFullYear();
+  if (dd < 10) {
+    dd = `0${dd}`;
+  }
+  if (mm < 10) {
+    mm = `0${mm}`;
+  }
+  today = `${mm}-${dd}-${yyyy}`;
+  console.log(today);
+};

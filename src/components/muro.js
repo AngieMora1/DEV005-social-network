@@ -6,6 +6,7 @@ import {
   deleteTask,
   editTasks,
   updateTask,
+  getDate,
   // likesRef,
 } from '../lib/firebaseConfig.js';
 
@@ -112,26 +113,24 @@ const muro = (navigateTo) => {
                   <div class='container-options'>
                     <button class='btn-delete' data-id="${doc.id}"> Eliminar </button>
                     <button class='btn-edit'data-id="${doc.id}"> Editar </button>
-                  </div> 
-                </div>
-                  <p>${task.description}</p>
-                  <button class="heart">
-                  <i class='bx bx-heart'></i> <span> 1.7K</span>
-                  </button>
-                  <div class="coment">
-                  <i class='bx bx-message-square-dots'></i> <span> 1.7K</span>
-                  </div>
-              </div>
+                    </div>
+                    </div>
+                        <p class='dateFormat'>Hola</p>
+                        <p>${task.description}</p>
+                        <button class='btn-like' data-id='${doc.id}'><i class='bx bx-heart' id='heart'></i></button> 
+                        <span data-id='${task.likes}'> 1.7K</span>
+                        <i class='bx bx-message-square-dots'id='comment' ></i> <span data-id='${doc.id}'> 1.7K</span>
+                    </div>
           `;
       });
+      // Almacenar la función getDate()
+      const dateTime = getDate();
       tasksContainer.innerHTML = html;
-
-      // Darle like a un post
-      const btnLike = tasksContainer.querySelector('.heart');
-      btnLike.addEventListener('click', () => {
-        console.log('Aqui deben darnos los likes');
-        // likesRef.transaction((likes) => likes + 1
-      });
+      // Seleccionar 'dateFormat' para que saque la fecha
+      // taskContainer es la const del contenedor de las publicaciones
+      // textContent establece el contenido de texto del elemento
+      const dateFormat = tasksContainer.querySelectorAll('.dateFormat');
+      dateFormat.textContent = dateTime;
 
       // Comentar: Eliminar un post
       const btnDelete = tasksContainer.querySelectorAll('.btn-delete');

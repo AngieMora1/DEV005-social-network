@@ -45,12 +45,11 @@ body{
 
   .img_food{
     position: absolute;
-    background-image: url(../assets/match_icon.png);
-    width: 80px;
-    height: 80px;
+    background-image: url(../assets/icon/natural_icon.png);
+    width: 60px;
+    height: 60px;
     background-size: contain;
     left: 0;
-    mix-blend-mode: color-burn;
   }
 
   .create-post{
@@ -79,8 +78,8 @@ body{
 
   .pop-up{
     position: absolute;
-    display: none;
     top: 0;
+    display: none;
     align-items: center;
     justify-content: center;
     height: 100%;
@@ -244,9 +243,9 @@ body{
     border-radius: 7px;
     padding-left: 10px;
     z-index: -3;
-    height: 100px;
     padding-top: 20px;
     font-size: 14px;
+    max-height: max-content;
   }
 
   .btn-menu{
@@ -262,6 +261,7 @@ body{
   }
 
   
+
   .container-options{
     display: none;
     position: absolute;
@@ -272,7 +272,6 @@ body{
     background-color: white;
     border-radius: 10px;
   }
-
 
   .btn-delete .btn-edit{
     position: absolute;
@@ -288,4 +287,6 @@ body{
   .dropdown:hover .container-options{
     display: block;
   }
+
+  /* like */
 }

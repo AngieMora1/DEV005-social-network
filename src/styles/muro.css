@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap');
+
+:root {
+  --color-rosa:#F2B3CA;
+  --color-azul:#ADD4D9;
+  --color-marron:#A6796F;
+  --color-negro:#0D0D0D;
+  --color-naranja:#F2B872;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  background-color: #D4CDC4;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Estilos para celular */
+
+@media(max-width: 480px) {
+
+  header{
+    background-color: #F2B872;
+    display: flex;
+    justify-content: center;
+    height: 80px;
+  }
+
+  .icon_exit{
+    position: absolute;
+    background-image: url(../assets/exit-regular-60.png);
+    cursor: pointer;
+    top: 20px;
+    right: 0;
+    margin-right: 20px;
+    width: 35px;
+    height: 35px;
+    background-size: cover;
+  }
+
+  .img_food{
+    position: absolute;
+    background-image: url(../assets/match_icon.png);
+    width: 80px;
+    height: 80px;
+    background-size: contain;
+    left: 0;
+    mix-blend-mode: color-burn;
+  }
+
+  .create-post{
+    display: flex;
+    position: relative;
+    align-items: center;
+    background-color: white;
+    margin: 20px;
+    height: 80px;
+    border-radius: 7px;
+    text-align: center;
+    justify-content: center;
+    box-shadow: 0 5px 10px rgba(0,0,0, 0.3);
+  }
+
+  .open-popup{
+    text-align: center;
+    border: 0;
+    padding: 10px;
+    background: none;
+    width: 300px;
+    height: 50px;
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+  }
+
+  .pop-up{
+    position: absolute;
+    display: none;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0, 0.5);
+    box-shadow: 0 12px 28px rgb(0, 0, 0, 0.12);
+    z-index: 999;
+  }
+
+  .post h2{
+    position: relative;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    padding: 5px 0;
+  }
+
+  .post .form-post{
+    position: relative;
+    top: 100px;
+    margin: 40px 30px;
+    height: 350px;
+    background-color: var(--color-azul);
+    border-radius: 7px;
+    z-index: 3;
+  }
+
+  .post .form-post :where(.content-post, .detail-post .privacy){
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    
+  }
+
+  .post .form-post .content-post img{
+    position: relative;
+    max-width: 52px;
+  }
+
+  .post .form-post .content-post .detail-post{
+    position: relative;
+    margin: 3px 0 0 12px;
+  }
+
+  .form-post .content-post .detail-post p{
+    position: relative;
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  .form-post .content-post .detail-post .privacy{
+    position: relative;
+    max-width: 120px;
+    cursor: pointer;
+    font-size: 11px;
+    margin-top: 3px;
+    padding: 0 10px;
+    border-radius: 5px;
+    background: #e4e6eb;
+    justify-content: space-between; /* buscar otra .form-posta de separar*/
+  }
+
+  .detail-post .privacy span{
+    position: relative;
+    font-size: 13px;
+    margin-top: 1px;
+    font-weight: 500;
+  }
+
+  .btn-menu i{
+    font-size: 20px;
+  }
+
+  .detail-post .privacy i:last-child{
+    position: relative;
+    font-size: 13px;
+    margin-left: 1px;
+  }
+
+  .post .form-post textarea{
+    position: relative;
+    resize: none;
+    width: 100%;
+    outline: none;
+    font-size: 14px;
+    margin-top: 10px;
+    min-height: 175px;
+    padding: 8px 10px;
+    text-align: justify;
+  }
+
+  .container-options button{
+    background-color: var(--color-azul);
+    border: none;
+    border-radius: 7px;
+    padding: 3px;
+    margin: 2px;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .form-post textarea:valid ~ button{
+    position: relative;
+    color: black;
+    cursor: pointer;
+    background: var(--color-azul);
+    font-weight: bold;
+  }
+
+  .cerrar-post{
+    position: absolute;
+    top: 141px;
+    right: 30px;
+    width: 10%;
+    border: none;
+    z-index: 999;
+    border-radius: 7px;
+    background-color: var(--color-azul);
+    font-size: 22px;
+    cursor: pointer;
+  }
+  .container{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(0, 0, 0, 0.12);
+  }
+
+  .form-post .publicar-post{
+    top: -6px;
+    border: none;
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    border-radius: 7px;
+  }
+  
+  /* task container*/
+  /*
+  .tasks-container{
+    display: flex;
+    position: relative;
+    align-items: center;
+    background-color: white;
+    margin: 20px;
+    width: 350px;
+    height: 80px;
+    border-radius: 10px;
+    text-align: center;
+    justify-content: center;
+    border: 1px solid black;
+    z-index: -3;
+  }
+  */
+
+  .publicaciones{
+    background-color: white;
+    margin: 20px;
+    border-radius: 7px;
+    padding-left: 10px;
+    z-index: -3;
+    height: 100px;
+    padding-top: 20px;
+    font-size: 14px;
+  }
+
+  .btn-menu{
+    border: none;
+    background-color: white;
+    top: -30px;
+    margin-right: 12px;
+    margin-left: 290px;
+    padding: 2px 2px 0px;
+    border-color: white;
+    position: absolute;
+    z-index: 4    
+  }
+
+  
+  .container-options{
+    display: none;
+    position: absolute;
+    width: 75px;
+    height: 60px;
+    top: 20px;
+    margin-left: 250px;
+    background-color: white;
+    border-radius: 10px;
+  }
+
+
+  .btn-delete .btn-edit{
+    position: absolute;
+    align-items: center;
+    border: none;
+  }
+
+  .dropdown{
+    display: inline-block;
+    position: relative;
+  }
+  
+  .dropdown:hover .container-options{
+    display: block;
+  }
+}

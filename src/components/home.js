@@ -38,23 +38,12 @@ const home = (navigateTo) => {
   const icontwitter = document.createElement('div');
   icontwitter.className = 'icontwitter';
   // ? botón de github
-  /* const buttongithub = document.createElement('button');
-  buttongithub.className = 'buttongithub';
-  buttongithub.addEventListener('click', async () => {
-    try {
-      loginWithGithub();
-      navigateTo('/muro');
-    } catch (error) {
-      console.log(error);
-    }
-  }); */
 
   const buttongithub = document.createElement('button');
   buttongithub.className = 'buttongithub';
   buttongithub.addEventListener('click', () => {
     loginWithGithub();
     onAuthStateChanged(auth, (user) => {
-      console.log(auth, user);
       if (user) {
         navigateTo('/muro');
       }
@@ -72,14 +61,19 @@ const home = (navigateTo) => {
     navigateTo('/login');
   });
   buttongoogle.textContent = 'Continuar con Google';
+  // ! Logueo con google
   buttongoogle.addEventListener('click', () => {
     loginWithGoogle();
-    navigateTo('/muro');
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigateTo('/muro');
+      }
+    });
   });
   buttontwitter.textContent = 'Continuar con Twitter';
   buttongithub.textContent = 'Continuar con Github';
   registrarAhora.innerHTML = ` ¿No tienes una cuenta?
-  <strong>Regístrate ahora</strong>`;
+    <strong>Regístrate ahora</strong>`;
   registrarAhora.addEventListener('click', () => {
     navigateTo('/register');
   });

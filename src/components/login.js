@@ -31,7 +31,6 @@ function login(navigateTo) {
     const password = document.querySelector('.loginContra').value;
     loginConfig(email, password)
       .then(() => {
-        console.log(email, password);
         navigateTo('/muro');
       })
       .catch((error) => {

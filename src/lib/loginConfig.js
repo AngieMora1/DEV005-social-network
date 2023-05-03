@@ -13,8 +13,7 @@ import { auth } from './firebaseConfig';
 export const loginConfig = (email, password) => new Promise((resolve, reject) => {
   signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
     const user = userCredential.user;
-    resolve({ email: user, password: user.password });
-    console.log(userCredential);
+    resolve({ email: user.email, password: user.password });
   })
     .catch((error) => {
       const errorCode = error.code;
@@ -29,30 +28,23 @@ export const loginWithGoogle = () => new Promise((resolve, reject) => {
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
-      console.log(credential);
+      const user = result.user;
+      console.log(credential, user);
       console.log('sign in with google');
       // const token = credential.accessToken;
       // The signed-in user info.
-      const user = result.user;
       resolve({ user });
       // IdP data available using getAdditionalUserInfo(result)
       // ...
     })
     .catch((error) => {
       const errorCode = error.code;
-      reject(errorCode);
+      const errorMessage = error.message;
+      reject(errorCode, errorMessage);
     });
 });
 
 // TODO: Función de logeo con Github
-/* export const loginWithGithub = () => {
-  const providerGithub = new GithubAuthProvider();
-  signInWithPopup(auth, providerGithub).then((credentials) => {
-    const userGithub = credentials.user;
-    console.log(userGithub);
-    console.log('sign in with Github');
-  });
-}; */
 
 export const loginWithGithub = () => {
   const githubProvider = new GithubAuthProvider();
@@ -85,13 +77,14 @@ export const loginWithTwitter = () => new Promise((resolve, reject) => {
   signInWithPopup(auth, provider)
     .then((result) => {
       const credential = TwitterAuthProvider.credentialFromResult(result);
+      const user = result.user;
       console.log(credential);
       console.log('Sign in with twitter');
-      const user = result.user;
       resolve({ user });
+      console.log(user);
     })
     .catch((error) => {
-      const errorCode = error.code;
-      reject(errorCode);
+      // const codeError = error.code;
+      reject(error);
     });
 });

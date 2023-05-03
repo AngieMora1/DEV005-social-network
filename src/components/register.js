@@ -20,20 +20,15 @@ function register(navigateTo) {
 
   // TODO: botón para registrar
   const buttonSaveInformation = formularioRegister.querySelector('.buttonSaveInformation');
-  console.log(buttonSaveInformation);
   buttonSaveInformation.addEventListener('click', async (e) => {
     e.preventDefault();
     const email = document.querySelector('.emailRegister').value;
     const password = document.querySelector('.passwordRegister').value;
-    console.log(email, password);
     registerConfig(email, password)
       .then(() => {
         navigateTo('/login');
       })
       .catch((error) => {
-        console.log(error.message);
-        console.log(error.code);
-
         if (error.code === 'auth/email-already-in-user') {
           alert('correo en uso');
         } else if (error.code === 'auth/invalid-email') {

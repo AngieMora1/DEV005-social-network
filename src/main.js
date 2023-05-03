@@ -1,7 +1,5 @@
 // importar
 
-import { onAuthStateChanged, getAuth } from 'firebase/auth';
-
 import home from './components/home.js';
 import login from './components/login.js';
 import error from './components/error404.js';

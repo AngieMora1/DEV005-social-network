@@ -117,11 +117,14 @@ const muro = (navigateTo) => {
         <button class='btn-edit' data-id='${doc.id}'>Editar</button>
         </div>
         </div>
-            <p class='dateFormat'>Hola</p>
-            <p>${task.description}</p>
-            <button class='btn-like' data-id='${doc.id}' data-liked='${task.likes.includes(auth.currentUser.uid)}'></button> 
-            <span class='count-like'> ${task.likes.length}</span>
-            <button class='btn-dislike' ><i class='bx bx-dislike'></i></button>
+        <div class='body-description'>
+        <p class='dateFormat'>Hola</p>
+        <p>${task.description}</p>
+        </div>
+        <div class='reactions'>
+        <button class='btn-like' data-id='${doc.id}' data-liked='${task.likes.includes(auth.currentUser.uid)}'></button> 
+        <span class='count-like'> ${task.likes.length}</span>
+        </div>
         </div>
           `;
     });

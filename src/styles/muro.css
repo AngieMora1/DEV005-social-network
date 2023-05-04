@@ -244,6 +244,7 @@ body{
     padding-left: 10px;
     z-index: -3;
     padding-top: 20px;
+    padding-bottom: 20px;
     font-size: 14px;
     max-height: max-content;
   }
@@ -288,5 +289,14 @@ body{
     display: block;
   }
 
+  .btn-like {
+    position: absolute;
+    background-image: url(../assets/icon/me-gusta.png);
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    background-size: contain;
+    left: 0;
+  }
   /* like */
 }

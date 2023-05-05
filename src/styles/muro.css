@@ -29,6 +29,28 @@ header{
   height: 80px;
 }
 
+.icon_exit{
+  position: absolute;
+  background-image: url(../assets/exit-regular-60.png);
+  cursor: pointer;
+  top: 20px;
+  right: 0;
+  margin-right: 20px;
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+}
+
+.img_food{
+  position: absolute;
+  background-image: url(../assets/icon/natural_icon.png);
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+  background-size: contain;
+  left: 0;
+}
+
 main {
   position: relative;
   display: flex;
@@ -69,41 +91,6 @@ main {
   max-height: max-content;
 }
 
-.icon_exit{
-  position: absolute;
-  background-image: url(../assets/exit-regular-60.png);
-  cursor: pointer;
-  top: 20px;
-  right: 0;
-  margin-right: 20px;
-  width: 40px;
-  height: 40px;
-  background-size: cover;
-}
-
-.img_food{
-  position: absolute;
-  background-image: url(../assets/icon/natural_icon.png);
-  width: 40px;
-  height: 40px;
-  margin-left: 20px;
-  background-size: contain;
-  left: 0;
-}
-
-.create-post{
-  display: flex;
-  position: relative;
-  align-items: center;
-  background-color: white;
-  margin: 20px;
-  height: 80px;
-  border-radius: 7px;
-  text-align: center;
-  justify-content: center;
-  box-shadow: 0 5px 10px rgba(0,0,0, 0.3);
-}
-
 .open-popup{
   text-align: center;
   border: 0;
@@ -115,9 +102,18 @@ main {
   background-color: white;
 }
 
+section {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
 .pop-up{
   position: absolute;
-  top: 0;
+  top: 0px;
   display: none;
   align-items: center;
   justify-content: center;
@@ -126,15 +122,6 @@ main {
   background-color: rgba(0,0,0, 0.5);
   box-shadow: 0 12px 28px rgb(0, 0, 0, 0.12);
   z-index: 999;
-}
-
-section {
-  display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
 }
 
 .post h2{
@@ -349,26 +336,16 @@ section {
     height: 80px;
   }
 
-  .icon_exit{
-    position: absolute;
-    background-image: url(../assets/exit-regular-60.png);
-    cursor: pointer;
-    top: 20px;
-    right: 0;
-    margin-right: 20px;
-    width: 40px;
-    height: 40px;
-    background-size: cover;
+  main {
+    position: relative;
+    display: flex;
+    justify-content: center;
   }
 
-  .img_food{
+  .tasks-container {
     position: absolute;
-    background-image: url(../assets/icon/natural_icon.png);
-    width: 40px;
-    height: 40px;
-    margin-left: 20px;
-    background-size: contain;
-    left: 0;
+    top: 100px;
+    width: 100%;
   }
 
   .create-post{
@@ -382,6 +359,21 @@ section {
     text-align: center;
     justify-content: center;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .publicaciones{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 30px auto 30px;
+    grid-gap: 3px;
+    background-color: white;
+    margin: 20px;
+    border-radius: 7px;
+    padding: 10px;
+    text-align: justify;
+    z-index: -3;
+    font-size: 14px;
+    max-height: max-content;
   }
 
   .open-popup{
@@ -478,6 +470,16 @@ section {
     font-weight: 500;
   }
 
+  .btn-menu{
+    border: none;
+    background-color: white;
+    right: 0;
+    padding: 2px 2px 0px;
+    border-color: white;
+    position: absolute;   
+  }
+
+
   .btn-menu i{
     font-size: 20px;
   }
@@ -551,42 +553,6 @@ section {
     text-align: left;
   }
   
-  main {
-    position: relative;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .tasks-container {
-    position: absolute;
-    top: 100px;
-    width: 100%;
-  }
-  
-  .publicaciones{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 30px auto 30px;
-    grid-gap: 3px;
-    background-color: white;
-    margin: 20px;
-    border-radius: 7px;
-    padding: 10px;
-    text-align: justify;
-    z-index: -3;
-    font-size: 14px;
-    max-height: max-content;
-  }
-
-  .btn-menu{
-    border: none;
-    background-color: white;
-    right: 0;
-    padding: 2px 2px 0px;
-    border-color: white;
-    position: absolute;   
-  }
-
   .container-options{
     display: none;
     position: absolute;
@@ -630,15 +596,4 @@ section {
     display: block;
   }
 
-  /* like */
-  .btn-like {
-    background-image: url(../assets/icon/me-gusta.png);
-    background-color: white;
-    margin-top: 5px;
-    border: none;
-    width: 20px;
-    height: 20px;
-    background-size: contain;
-    left: 0;
-  }
 }

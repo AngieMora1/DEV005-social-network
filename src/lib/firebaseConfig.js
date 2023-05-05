@@ -32,6 +32,7 @@ const firebaseConfig = {
 // Initialize Firebase console.log(app)
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+
 // Inicializar la base de datos en tiempo real y obtener una referencia al servicio
 // Conexión a la base de datos
 const db = getFirestore(app);
@@ -41,6 +42,7 @@ export const saveTask = (description) => {
     description,
     date: Date.now(),
     likes: [],
+    username: auth.currentUser.email,
   });
   // nombre de la colección "post",
   // donde se van a guardar los datos
@@ -66,7 +68,6 @@ export const getDate = () => {
     mm = `0${mm}`;
   }
   today = `${mm}-${dd}-${yyyy}`;
-  console.log(today);
 };
 
 export const addLike = (id) => {

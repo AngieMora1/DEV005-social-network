@@ -112,6 +112,7 @@ const muro = (navigateTo) => {
         <div class='publicaciones'>
         <div class='dropdown'>
         <button class='btn-menu'><i class='bx bx-dots-horizontal-rounded'></i></button>
+        <p>${task.username}</p>
         <div class='container-options'>
         <button class='btn-delete' data-id='${doc.id}'>Eliminar</button>
         <button class='btn-edit' data-id='${doc.id}'>Editar</button>

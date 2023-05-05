@@ -13,7 +13,6 @@ function register(navigateTo) {
     <form class="infoRegister" id="formulario">
       <input type="email" class="emailRegister" id="emailregister" placeholder="Iniciar sesión" required> 
         <input type="password" class="passwordRegister" id="passwordregister" placeholder="Contraseña" required>
-          <input type="password" class="checkPasswordRegister" id= "checkPasswordRegister" placeholder="Repetir contraseña" required>
             <button class="buttonSaveInformation" type="submit">Guardar</button>
     </form>
   </div>`;

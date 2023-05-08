@@ -72,8 +72,8 @@ const home = (navigateTo) => {
   });
   buttontwitter.textContent = 'Continuar con Twitter';
   buttongithub.textContent = 'Continuar con Github';
-  registrarAhora.innerHTML = ` ¿No tienes una cuenta?
-    <strong>Regístrate ahora</strong>`;
+  registrarAhora.innerHTML = `¿No tienes una cuenta?
+    <p class="texto-register"><strong>Regístrate ahora</strong></p>`;
   registrarAhora.addEventListener('click', () => {
     navigateTo('/register');
   });

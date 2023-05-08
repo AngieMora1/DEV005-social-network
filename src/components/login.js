@@ -16,7 +16,7 @@ function login(navigateTo) {
   <button class="buttonReturn" type="submit">Ingresar</button>
   </form>
   <span class="mensajelogin">¿No tienes una cuenta?
-  <strong>Regístrate</strong></span>
+  <p class="texto-register-login"><strong>Regístrate</strong></p></span>
   </div>`;
 
   const mensajelogin = formularioLogin.querySelector('.mensajelogin');

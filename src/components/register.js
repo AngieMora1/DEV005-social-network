@@ -11,7 +11,7 @@ function register(navigateTo) {
     <h2 class="menssageRegisterRouter">Regístrate</h2>
    </div>
     <form class="infoRegister" id="formulario">
-      <input type="email" class="emailRegister" id="emailregister" placeholder="Iniciar sesión" required> 
+      <input type="email" class="emailRegister" id="emailregister" placeholder="Correo Electrónico" required> 
         <input type="password" class="passwordRegister" id="passwordregister" placeholder="Contraseña" required>
             <button class="buttonSaveInformation" type="submit">Guardar</button>
     </form>

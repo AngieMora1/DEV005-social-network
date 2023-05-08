@@ -21,11 +21,8 @@ const muro = (navigateTo) => {
   muroDiv.innerHTML = '';
   muroDiv.innerHTML += `
   <header>
-  <nav class='navbar'>
-  <div class='img_food' ></div>
-  <h2>Food Match</h2>
-  <div class='icon_exit'></div>
-  </nav>
+  <a class='logo'><i class='bx bx-leaf'></i><span>Food Match</span></a>
+  <button class='icon_exit'><i class='bx bx-exit' ></i></button>
   </header>
   <main>
   
@@ -49,7 +46,7 @@ const muro = (navigateTo) => {
   </div>
   </div>
   <textarea id='textarea-post' placeholder='Descripción del post :D'> </textarea>
-  <button class='publicar-post' type='submit' >Guardar</button>
+  <button class='publicar-post' type='submit'>Publicar</button>
   </form>
   </section>
   </div>

@@ -1,8 +1,8 @@
 /**
  * @jest-environment jsdom
  */
-import * as firebaseAuth from '../../src/lib/loginConfig.js';
-import { loginWithTwitter } from '../../src/lib/loginConfig';
+import * as firebaseAuth from '../src/lib/firebaseConfig';
+import { loginWithTwitter } from '../src/lib/loginConfig';
 
 jest.mock('firebase/auth', () => ({
   __esModule: true, //    <----- this __esModule: true is important

@@ -7,15 +7,17 @@ import {
   TwitterAuthProvider,
   signInWithPopup,
 } from 'firebase/auth';
-import { auth } from './firebaseConfig';
+import { auth } from './firebaseConfig.js';
 
 // TODO: Función del logueo previamente registrado
 export const loginConfig = (email, password) => new Promise((resolve, reject) => {
-  signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
-    const user = userCredential.user;
-    resolve({ email: user.email, password: user.password });
-  })
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      resolve({ email: user.email, password: user.password });
+    })
     .catch((error) => {
+      // const errorMessage = error.message;
       const errorCode = error.code;
       reject(errorCode);
     });
@@ -26,26 +28,17 @@ export const loginWithGoogle = () => new Promise((resolve, reject) => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
     .then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const credential = GithubAuthProvider.credentialFromResult(result);
       const user = result.user;
-      // console.log(credential, user);
-      // console.log('sign in with google');
-      // const token = credential.accessToken;
-      // The signed-in user info.
-      resolve({ user, credential });
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
+      resolve(user, credential);
     })
     .catch((error) => {
       const errorCode = error.code;
-      const errorMessage = error.message;
-      reject(errorCode, errorMessage);
+      reject(errorCode);
     });
 });
 
 // TODO: Función de logeo con Github
-
 export const loginWithGithub = () => new Promise((resolve, reject) => {
   const provider = new GithubAuthProvider();
   signInWithPopup(auth, provider)
@@ -61,21 +54,35 @@ export const loginWithGithub = () => new Promise((resolve, reject) => {
     });
 });
 
-// TODO: Función de logeo con Twitter
-
+// TODO: Función de logueo con Twitter
 export const loginWithTwitter = () => new Promise((resolve, reject) => {
   const provider = new TwitterAuthProvider();
   signInWithPopup(auth, provider)
     .then((result) => {
       const credential = TwitterAuthProvider.credentialFromResult(result);
       const user = result.user;
-      // console.log(credential);
-      // console.log('Sign in with twitter');
       resolve({ user, credential });
-      // console.log(user);
     })
     .catch((error) => {
-      // const codeError = error.code;
-      reject(error);
+      console.log('error lors de lauthentification firebase : ', error);
+      console.log('codeError : ', error.code);
+      // error.email is undefined
+      console.log('emailError : ', error.email);
+      console.log('errorMessage : ', error.message);
+      const codeError = error.code;
+      console.log(codeError);
+      reject(error.code);
     });
 });
+
+// TODO: Cerrar sesión
+/*
+export const signOutSession = () => {
+  signOut(auth).then(() => {
+    alert('Cerrando sesión');
+  }).catch((error) => {
+    const errores = error.code;
+    alert(errores);
+  });
+};
+*/

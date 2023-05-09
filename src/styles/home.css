@@ -438,10 +438,10 @@ body{
     background-color: #F2B872;
     }
 
-  .buttonemail:hover, .buttongoogle:hover,
-  .buttontwitter:hover, .buttongithub:hover{
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  }
+.buttonemail:hover, .buttongoogle:hover,
+.buttontwitter:hover, .buttongithub:hover{
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
 
   
 
@@ -501,31 +501,29 @@ body{
   
   /* Login*/
 
-  .loginDiv{
-    position: relative;
-    top: 20px;
-    width: 100vw;
-    height: 100vh;
-    bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-  }
+.loginDiv{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  .imgLogin {
-    position: absolute;
-    background-image: url(../assets/image-food.png);
-    width: 200px;
-    height: 200px;
-    top: 60px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-  }
+.imgLogin {
+  position: absolute;
+  background-image: url(../assets/image-food.png);
+  width: 200px;
+  height: 200px;
+  top: 60px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
 
   .messageLogin {
     position: absolute;
@@ -553,8 +551,7 @@ body{
     border-radius: 10px;
     font-size: 18px;
     width: 90%;
-    height: 45px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins';
     border-style: none;
     background-image:url(../assets/icon_email.png);
     background-repeat: no-repeat;
@@ -567,8 +564,7 @@ body{
     border-radius: 10px;
     font-size: 18px;
     width: 90%;
-    height: 45px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins';
     border-style: none;
     background-image:url(../assets/icon_password.png);
     background-repeat: no-repeat;
@@ -590,33 +586,35 @@ body{
     align-items: center;
     font-family: 'Poppins', sans-serif;
     border-style: none;
+    cursor: pointer;
   }
   .mensajelogin {
     position: absolute;
+    flex-direction: column;
+    width: 200px;
+    margin: 10px auto 10px;
+    top:550px;
+  }
+
+  /*Register*/
+
+  .registerDiv{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    top: 20px;
+    bottom: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     width: 100%;
     margin: 10px auto 10px;
-    top: 550px;
+    top: 530px;
 
   }
 
 /*Register*/
-
-  .registerDiv{
-    position: relative;
-    height: 100%;
-    width: 100vw;
-    top: 20px;
-    bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-  }
   .imgRegister{
     position: absolute;
     background-image: url(../assets/image-food.png);
@@ -643,7 +641,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 90%;
     
   }
   
@@ -660,30 +658,10 @@ body{
     padding: 12px 0px 12px 60px;
     
   }
-  .passwordRegister {
-    margin: 8px 8px 0px 8px;
-    border-radius: 10px;
-    font-size: 18px;
-    width: 90%;
-    font-family: 'Poppins', sans-serif;
-    border-style: none;
+  .passwordRegister,.checkPasswordRegister{
     background-image:url(../assets/icon_password.png);
     background-repeat: no-repeat;
     background-position: 20px center;
-    padding: 12px 0px 12px 60px;
-  }
-  .buttonSaveInformation{
-    position: absolute;
-    margin: 8px 8px 0px 8px;
-    border-radius: 10px;
-    font-size: 18px;
-    flex-direction: column;
-    top: 130px;
-    padding: 12px;
-    width: 90%;
-    background: #F2B872;
-    align-items: center;
-    font-family: 'Poppins', sans-serif;
-    border-style: none;
   }
 }
+

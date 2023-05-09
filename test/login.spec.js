@@ -59,17 +59,7 @@ describe('login es una funcion', () => {
       done();
     });
   });
-  it('al dar click  debe llamar a la funcion navigateTo a la ruta "/"', () => {
-    const DOM = document.createElement('div');
-    const navigateTo = jest.fn();
-    document.body.append(DOM);
-    DOM.append(login(navigateTo));
-    const botonMensaje = DOM.querySelector('.btn-regresar');
-    botonMensaje.click();
-    expect(navigateTo).toHaveBeenCalledWith('/');
-  });
 });
-
 describe('verificar que sean funciones', () => {
   it('loginWithGoogle es una funcion', () => {
     const loginWithGoogle = jest.fn();

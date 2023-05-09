@@ -26,6 +26,7 @@ const home = (navigateTo) => {
   // ? botón de twitter
   const buttontwitter = document.createElement('button');
   buttontwitter.className = 'buttontwitter';
+  // ! Logueo con twitter
   buttontwitter.addEventListener('click', () => {
     loginWithTwitter();
     onAuthStateChanged(auth, (user) => {
@@ -34,13 +35,13 @@ const home = (navigateTo) => {
       }
     });
   });
-
   const icontwitter = document.createElement('div');
   icontwitter.className = 'icontwitter';
   // ? botón de github
 
   const buttongithub = document.createElement('button');
   buttongithub.className = 'buttongithub';
+  // ! Logueo con github
   buttongithub.addEventListener('click', () => {
     loginWithGithub();
     onAuthStateChanged(auth, (user) => {
@@ -49,7 +50,6 @@ const home = (navigateTo) => {
       }
     });
   });
-
   const icongithub = document.createElement('div');
   icongithub.className = 'icongithub';
   // ?
@@ -61,6 +61,15 @@ const home = (navigateTo) => {
     navigateTo('/login');
   });
   buttongoogle.textContent = 'Continuar con Google';
+  // ! Logueo con google
+  buttongoogle.addEventListener('click', () => {
+    loginWithGoogle();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigateTo('/muro');
+      }
+    });
+  });
   // ! Logueo con google
   buttongoogle.addEventListener('click', () => {
     loginWithGoogle();

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-named-as-default
 import { registerUser } from '../lib/registerConfig.js';
 
 const register = (navigateTo) => {
@@ -7,13 +6,13 @@ const register = (navigateTo) => {
 
   formularioRegister.innerHTML = '';
   formularioRegister.innerHTML += `
-  <div class='registerDiv'>
+  <div class='registerDiv'> 
   <button class='btn-regresar'><i class='bx bx-chevron-left'></i></button>
-   <div class='imgRegister'>
+   <div class='imgRegister'> 
     <h2 class='menssageRegisterRouter'>Regístrate</h2>
    </div>
     <form class='infoRegister' id='formulario'>
-      <input type='email' class='emailRegister' id='emailregister' placeholder='Correo Electrónico' required>
+      <input type='email' class='emailRegister' id='emailregister' placeholder='Iniciar sesión' required> 
       <p class='correo-mensaje'></p>
         <input type='password' class='passwordRegister' id='passwordregister' placeholder='Contraseña' required>
         <p class='contra-mensaje'></p>

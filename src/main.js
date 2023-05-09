@@ -1,8 +1,7 @@
 // importar
-
 import home from './components/home.js';
-import login from './components/login.js';
 import error from './components/error404.js';
+import login from './components/login.js';
 import register from './components/register.js';
 import muro from './components/muro.js';
 
@@ -21,7 +20,7 @@ const routes = [
 const defaultRoute = '/';
 const root = document.getElementById('root');
 
-function navigateTo(hash) {
+const navigateTo = (hash) => {
   const route = routes.find((routeFound) => routeFound.path === hash);
   // console.log(route.component());
   if (route && route.component) {
@@ -34,26 +33,10 @@ function navigateTo(hash) {
   } else {
     navigateTo('/error');
   }
-}
+};
 
 window.onpopstate = () => {
   navigateTo(window.location.pathname);
 };
 
 navigateTo(window.location.pathname || defaultRoute);
-
-/* const auth = getAuth();
-function initializar() {
-  onAuthStateChanged(auth, (user) => {
-    const currentRoute = window.location.pathname;
-    if (user) {
-      navigateTo('/muro');
-    } else if (currentRoute === defaultRoute || currentRoute === '/register') {
-      navigateTo(currentRoute);
-    } else {
-      navigateTo('/');
-    }
-  });
-}
-
-initializar(); */

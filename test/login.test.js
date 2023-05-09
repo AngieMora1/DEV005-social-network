@@ -20,14 +20,4 @@ describe('Probar login', () => {
     const haveAButton = DOM.querySelector('.buttontwitter');
     expect(haveAButton).not.toBe(undefined);
   });
-  /* it('Despues de dar click llamar a la funcion navigateTo a la ruta muro', () => {
-    jest.spyOn(firebaseAuth, 'loginWithTwitter');
-    const DOM = Document.createElement('div');
-    const navigateTo = jest.fn();
-    document.body.append(DOM);
-    DOM.append(loginWithTwitter(navigateTo));
-    const botonEnter = DOM.querySelector('.buttontwitter');
-    botonEnter.click();
-    expect(navigateTo).toHaveBeenCalledWith('/muro');
-  }); */
 });

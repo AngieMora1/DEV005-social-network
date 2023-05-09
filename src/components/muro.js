@@ -5,7 +5,6 @@ import {
   deleteTask,
   editTasks,
   updateTask,
-  getDate,
   addLike,
   auth,
   removeLike,
@@ -46,7 +45,7 @@ const muro = (navigateTo) => {
   </div>
   </div>
   <textarea id='textarea-post' placeholder='Descripción del post :D'> </textarea>
-  <button class='publicar-post' type='submit'>Publicar</button>
+  <button class='publicar-post' type='submit' >Guardar</button>
   </form>
   </section>
   </div>
@@ -62,10 +61,6 @@ const muro = (navigateTo) => {
     signOut(auth)
       .then(() => {
         navigateTo('/');
-      })
-      .catch((error) => {
-        // An error happened.
-        console.log(error);
       });
   });
 
@@ -109,32 +104,29 @@ const muro = (navigateTo) => {
         <div class='publicaciones'>
         <div class='dropdown'>
         <button class='btn-menu'><i class='bx bx-dots-horizontal-rounded'></i></button>
-        <p>${task.username}</p>
+        <h3>${task.username.split('@')[0]}</h3>
         <div class='container-options'>
         <button class='btn-delete' data-id='${doc.id}'>Eliminar</button>
         <button class='btn-edit' data-id='${doc.id}'>Editar</button>
         </div>
         </div>
         <div class='body-description'>
-        <p class='dateFormat'>Hola</p>
+        <p class='dateFormat'>${task.date}</p>
         <p>${task.description}</p>
         </div>
         <div class='reactions'>
-        <button class='btn-like' data-id='${doc.id}' data-liked='${task.likes.includes(auth.currentUser.uid)}'></button> 
+        <button class='btn-like' data-id='${doc.id}' data-liked='${task.likes.includes(auth.currentUser.uid)}'>
+        </button> 
         <span class='count-like'> ${task.likes.length}</span>
         </div>
         </div>
           `;
     });
 
-    const dateTime = getDate();
-
     // en el parametro event se puede resumir debido a q todos
     // los elementos son objetos, esto es de la siguiente manera:
     // ({target: {dataset}})
     tasksContainer.innerHTML = html;
-    const dateFormat = tasksContainer.querySelectorAll('.dateFormat');
-    dateFormat.textContent = dateTime;
 
     const btnDelete = tasksContainer.querySelectorAll('.btn-delete');
     btnDelete.forEach((btn) => {
@@ -144,7 +136,6 @@ const muro = (navigateTo) => {
     });
 
     const btnEdit = tasksContainer.querySelectorAll('.btn-edit');
-    console.log(btnEdit);
     btnEdit.forEach((btn) => {
       btn.addEventListener('click', async (event) => {
         const cerrarPost = muroDiv.querySelector('.cerrar-post');
@@ -160,7 +151,7 @@ const muro = (navigateTo) => {
           }
         });
         const docEdit = await editTasks(event.target.dataset.id);
-        console.log(event.target.dataset);
+        // console.log(docEdit);
         const taskEdit = docEdit.data();
         const formPost = muroDiv.querySelector('.form-post');
         formPost['textarea-post'].value = taskEdit.description;
@@ -170,10 +161,10 @@ const muro = (navigateTo) => {
     });
 
     const btnLike = tasksContainer.querySelectorAll('.btn-like');
-    // const btnDislike = tasksContainer.querySelectorAll('.btn-dislike');
+
     btnLike.forEach((btn) => {
       btn.addEventListener('click', (event) => {
-        console.log(event.target.dataset);
+        // console.log(event.target.dataset);
         if (event.target.dataset.liked === 'false') {
           addLike(event.target.dataset.id);
         } else {
@@ -181,9 +172,11 @@ const muro = (navigateTo) => {
         }
       });
     });
-  }); // salida
+  });
 
   const formPost = muroDiv.querySelector('.form-post');
+  // const publicarPost = muroDiv.querySelector('.publicar-post');
+  // const popUp = muroDiv.querySelector('.pop-up');
   formPost.addEventListener('submit', (e) => {
     e.preventDefault();
     const description = formPost['textarea-post'].value;

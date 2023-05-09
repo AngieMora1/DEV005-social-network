@@ -142,17 +142,6 @@ body{
     top: 570px;
   } 
 
-  .texto-register {
-    color: black;
-    transition: color .5s;
-    font-size: 20px;
-  }
-
-  .texto-register:hover {
-    color: #A6796F;
-    
-  }
-
   
   /* Login*/
 
@@ -260,14 +249,19 @@ body{
     top: 530px;
   }
 
-  .texto-register-login {
-    color: black;
-    transition: color .5s;
-    font-size: 20px;
+  .efecto-after::after {
+  cursor: pointer;
+  content: '';
+  display: block;
+  height: 3px;
+  background: #a56f2c;
+  transform: scale(0,1);
+  transform-origin: center left;
+  transition: transform .5s;
   }
 
-  .texto-register-login:hover {
-    color: #A6796F;
+  .efecto-after:hover::after {
+  transform: scale(1,1);
   }
 
 

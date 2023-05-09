@@ -69,6 +69,10 @@ header .icon_exit{
   cursor: pointer;
 }
 
+.btn-menu i{
+  font-size: 20px;
+}
+
 header .icon_exit i{
   font-weight: 700;
 }
@@ -194,9 +198,6 @@ header .icon_exit i{
   font-weight: 500;
 }
 
-.btn-menu i{
-  font-size: 20px;
-}
 
 .detail-post .privacy i:last-child{
   position: relative;

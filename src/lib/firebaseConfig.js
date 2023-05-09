@@ -1,11 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
+// escucha y traer los cambios de los datos -> getDocs
 import {
-  getFirestore, // conexion
+  getFirestore, // conexión
   collection, // crear una tabla con los datos
   addDoc, // añadir documentos
-  onSnapshot, // escucha y trae los cambios de los datos
+  onSnapshot,
   deleteDoc,
   doc,
   getDoc,
@@ -16,13 +17,18 @@ import {
   arrayRemove,
 } from 'firebase/firestore';
 
+import {
+  getDatabase,
+} from 'firebase/database';
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Configuración del proyecto
+// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyACdLyMpGhBbp5ogyQ2z2-GeDWz4orx4Z4',
   authDomain: 'foodmatch-5bf52.firebaseapp.com',
+  databaseURL: 'https://foodmatch-5bf52-default-rtdb.firebaseio.com/',
   projectId: 'foodmatch-5bf52',
   storageBucket: 'foodmatch-5bf52.appspot.com',
   messagingSenderId: '655316254171',
@@ -32,31 +38,13 @@ const firebaseConfig = {
 // Initialize Firebase console.log(app)
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-
-// Inicializar la base de datos en tiempo real y obtener una referencia al servicio
 // Conexión a la base de datos
 const db = getFirestore(app);
-// Guardar Publicacion en firestore
+// Conexión a RealTime Database
+export const database = getDatabase(app);
+// Guardar publicación en firestore
+
 export const saveTask = (description) => {
-  addDoc(collection(db, 'post'), {
-    description,
-    date: Date.now(),
-    likes: [],
-    username: auth.currentUser.email,
-  });
-  // nombre de la colección "post",
-  // donde se van a guardar los datos
-};
-// traer los post guardados en firestore
-// export const getTask = () => getDocs(collection(db, 'post'));
-
-// onSnapshot -> para que escuche los cambios y se vea en tiempo real
-export const onGetTasks = (callback) => onSnapshot(query(collection(db, 'post'), orderBy('date', 'desc')), callback);
-export const deleteTask = (id) => deleteDoc(doc(db, 'post', id));
-export const editTasks = (id) => getDoc(doc(db, 'post', id));
-export const updateTask = (id, newDates) => updateDoc(doc(db, 'post', id), newDates);
-
-export const getDate = () => {
   let today = new Date();
   let dd = today.getDate();
   let mm = today.getMonth() + 1;
@@ -68,11 +56,30 @@ export const getDate = () => {
     mm = `0${mm}`;
   }
   today = `${mm}-${dd}-${yyyy}`;
+  addDoc(collection(db, 'post'), {
+    description,
+    date: today,
+    likes: [],
+    username: auth.currentUser.email,
+  });
+  // nombre de la colección 'post',
+  // donde se van a guardar los datos
 };
+// traer los post guardados en firestore
+// export const getTask = () => getDocs(collection(db, 'post'));
+
+// onSnapshot -> para que escuche los cambios y se vea en tiempo real
+export const onGetTasks = (callback) => onSnapshot(query(collection(db, 'post'), orderBy('date', 'desc')), callback);
+
+export const deleteTask = (id) => deleteDoc(doc(db, 'post', id));
+
+export const editTasks = (id) => getDoc(doc(db, 'post', id));
+
+export const updateTask = (id, newDates) => updateDoc(doc(db, 'post', id), newDates);
 
 export const addLike = (id) => {
-  const docRef = doc(db, 'post', id);
   const currentUser = auth.currentUser;
+  const docRef = doc(db, 'post', id);
   updateDoc(docRef, {
     likes: arrayUnion(currentUser.uid),
   });

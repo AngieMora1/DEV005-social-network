@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-named-as-default
-import registerConfig from '../lib/registerConfig.js';
+import registerUser from '../lib/registerConfig.js';
 
-function register(navigateTo) {
+const register = (navigateTo) => {
   const formularioRegister = document.createElement('div');
   formularioRegister.className = 'formularioRegister';
 
@@ -23,7 +23,7 @@ function register(navigateTo) {
     e.preventDefault();
     const email = document.querySelector('.emailRegister').value;
     const password = document.querySelector('.passwordRegister').value;
-    registerConfig(email, password)
+    registerUser(email, password)
       .then(() => {
         navigateTo('/login');
       })
@@ -42,6 +42,6 @@ function register(navigateTo) {
   });
 
   return formularioRegister;
-}
+};
 
 export default register;

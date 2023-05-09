@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from './firebaseConfig';
+import { auth } from './firebaseConfig.js';
 
-const registerUser = (email, password) => new Promise((resolve, reject) => {
+export const registerUser = (email, password) => new Promise((resolve, reject) => {
   createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
     const user = userCredential.user;
     resolve({ email: user.email });
@@ -11,5 +11,3 @@ const registerUser = (email, password) => new Promise((resolve, reject) => {
       reject(errorMessage);
     });
 });
-
-export default registerUser;

@@ -10,7 +10,7 @@ import {
 import { auth } from './firebaseConfig';
 
 // TODO: Función del logueo previamente registrado
-export const loginConfigUser = (email, password) => new Promise((resolve, reject) => {
+export const loginConfig = (email, password) => new Promise((resolve, reject) => {
   signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
     const user = userCredential.user;
     resolve({ email: user.email, password: user.password });
@@ -29,11 +29,11 @@ export const loginWithGoogle = () => new Promise((resolve, reject) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const user = result.user;
-      console.log(credential, user);
-      console.log('sign in with google');
+      // console.log(credential, user);
+      // console.log('sign in with google');
       // const token = credential.accessToken;
       // The signed-in user info.
-      resolve({ user });
+      resolve({ user, credential });
       // IdP data available using getAdditionalUserInfo(result)
       // ...
     })
@@ -46,30 +46,21 @@ export const loginWithGoogle = () => new Promise((resolve, reject) => {
 
 // TODO: Función de logeo con Github
 
-export const loginWithGithub = () => {
-  const githubProvider = new GithubAuthProvider();
-  signInWithPopup(auth, githubProvider)
+export const loginWithGithub = () => new Promise((resolve, reject) => {
+  const provider = new GithubAuthProvider();
+  signInWithPopup(auth, provider)
     .then((result) => {
       const credential = GithubAuthProvider.credentialFromResult(result);
       const githubUser = result.user;
-      console.log(githubUser);
-      console.log(credential);
-      console.log('sign in with Github');
-    }).catch((error) => {
-      // Handle Errors here.
+      resolve({ credential, githubUser });
+    })
+    .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.email;
-      // The AuthCredential type that was used.
-      const credentialError = GithubAuthProvider.credentialFromError(error);
-      // ...
-      console.log(errorCode);
-      console.log(errorMessage);
-      console.log(email);
-      console.log(credentialError);
+      reject(errorCode, errorMessage);
     });
-};
+});
+
 // TODO: Función de logeo con Twitter
 
 export const loginWithTwitter = () => new Promise((resolve, reject) => {
@@ -78,10 +69,10 @@ export const loginWithTwitter = () => new Promise((resolve, reject) => {
     .then((result) => {
       const credential = TwitterAuthProvider.credentialFromResult(result);
       const user = result.user;
-      console.log(credential);
-      console.log('Sign in with twitter');
-      resolve({ user });
-      console.log(user);
+      // console.log(credential);
+      // console.log('Sign in with twitter');
+      resolve({ user, credential });
+      // console.log(user);
     })
     .catch((error) => {
       // const codeError = error.code;

@@ -20,8 +20,8 @@ const muro = (navigateTo) => {
   muroDiv.innerHTML = '';
   muroDiv.innerHTML += `
   <header>
-  <a class='logo'><i class='bx bx-leaf'></i><span>Food Match</span></a>
-  <button class='icon_exit'><i class='bx bx-exit' ></i></button>
+    <a class='logo'><i class='bx bx-leaf'></i><span>Food Match</span></a>
+    <button class='icon_exit'><i class='bx bx-exit' ></i></button>
   </header>
   <main>
   

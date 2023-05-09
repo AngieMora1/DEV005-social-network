@@ -1,4 +1,4 @@
-import { loginConfig } from '../lib/loginConfig';
+import { loginConfigUser } from '../lib/loginConfig';
 
 function login(navigateTo) {
   const formularioLogin = document.createElement('div');
@@ -29,7 +29,7 @@ function login(navigateTo) {
     e.preventDefault();
     const email = document.querySelector('.loginCorreo').value;
     const password = document.querySelector('.loginContra').value;
-    loginConfig(email, password)
+    loginConfigUser(email, password)
       .then(() => {
         navigateTo('/muro');
       })

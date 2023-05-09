@@ -179,6 +179,27 @@ para guiarte con eso.
 Se realizaron test de usabilidad para saber la opinión de los usuarios sobre la página, obteniendo los siguientes resultados: 
   
 * **Usuario 1**
-  Nos solicito que la palabra "Registrar ahora" resalte cuando el puntero pase sobre la palabra. De forma silimar se solicitó que el botón Guardar e Ingresar, así como los espacios para colocar el Correo Electrónico y la Contraseña generen alguna reacción cuando el puntero pase sobre ellos. Por otro lado, respecto a las características del muro se solicitó que en los post aparezcan los nombres o alias de los usuarios en vez de los correos, debido a que pueden ser información sensible. Así también se solicitó colocar la hora de publicación y el lugar. También se solicitó que el boton de like cambie de color cuando se coloque un like.
-  - [ ] *Que esté conectado con Firebase*
-  - [ ] *Que se guarde el conteo de los like y se visualicen*
+  Después de que el usuario revisara la aplicación, sugirió los siguiente cambios:
+  - [ ] Que la palabra "Registrar ahora" resalte cuando el puntero pase sobre ella
+  - [ ] Que el botón Guardar e Ingresar, así como los espacios para colocar el Correo Electrónico y la Contraseña generen alguna reacción cuando el puntero pase sobre ellos
+  - [ ] Solicitó que en los post aparezcan los nombres o alias de los usuarios en vez de los correos, debido a que pueden ser información sensible
+  - [ ] Que los post incluyan la hora de su publicación y el lugar
+  
+* **Usuario 2**
+  Después de que el usuario revisara la aplicación, sugirió los siguiente cambios:
+  - [ ] Cuando le de guardar en el cuadro de publicar seria bueno que el cuadro se cerrara
+  - [ ] En el momento de eliminar un test, deberia de aparecer un mensaje para asegurarse de querer borrar la publicacion
+  - [ ] Cuando estaba editando y le di al boton guardar, como el cuadro seguia mostrandose pense que no habia guardado, seria bueno que cuando se de click se cierre ese cuadro.
+  - [ ] En el like, seria bueno que el corazon cambiara de color para saber que le di like
+
+* **Usuario 3**
+  Después de que el usuario revisara la aplicación, sugirió los siguiente cambios:
+   - [ ] Cuando se va a publicar por segunda vez, la informacion de la primera publicacion sigue en el cuadro
+   - [ ] Cuando se va a editar una publicacion y luego se guarda el cuadro sigue puesto y no se cierra
+  
+* **Usuario 4**
+  Después de que usuario revisara la aplicación, sugirió los siguiente cambios:
+  - [ ] Corregir alineación de los iconos del logueo de las redes sociales
+  - [ ] Que los mensajes de error se muestren debajo de los casillas donde se ingresa el correo y la contraseña
+  - [ ] Agregar un botón de retorno a la página de login y registro hacia la página de bienvenida
+  

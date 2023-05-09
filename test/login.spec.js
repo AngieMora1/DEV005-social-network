@@ -5,6 +5,8 @@ import * as firebaseAuth from 'firebase/auth';
 import login from '../src/components/login.js';
 import home from '../src/components/home.js';
 import * as loginConfig from '../src/lib/loginConfig.js';
+// import home from '../src/components/home.js';
+// import home from '../src/components/muro.js';
 
 jest.mock('firebase/auth', () => ({
   __esModule: true, //    <----- this __esModule: true is important
@@ -38,7 +40,6 @@ describe('login es una funcion', () => {
     botonMensaje.click();
     expect(navigateTo).toHaveBeenCalledWith('/');
   });
-
   it('al dar click al boton ingresar, nos lleva a la ruta "/muro"', (done) => {
     jest.spyOn(firebaseAuth, 'signInWithEmailAndPassword').mockResolvedValue({ user: 'prueba@prueba.com' });
     const DOM = document.createElement('div');
@@ -68,7 +69,26 @@ describe('login es una funcion', () => {
     });
   });
 });
-describe('loginWithGoogle es una funcion ', () => {
+describe('verificar que sean funciones', () => {
+  it('loginWithGoogle es una funcion', () => {
+    const loginWithGoogle = jest.fn();
+    expect(typeof loginWithGoogle).toBe('function');
+  });
+  it('GoogleAuthProvider es una funcion', () => {
+    const GoogleAuthProvider = jest.fn();
+    expect(typeof GoogleAuthProvider).toBe('function');
+  });
+  it('signInWithPopup es una funcion', () => {
+    const signInWithPopup = jest.fn();
+    expect(typeof signInWithPopup).toBe('function');
+  });
+  it('validar que loginWithGoogle es una funcion', () => {
+    const loginWithGoogle = jest.fn();
+    expect(typeof loginWithGoogle).toBe('function');
+  });
+});
+
+describe('verificar que la funcion sea llamada "google"', () => {
   it('loginWithGoogle es una funcion', () => {
     const loginWithGoogle = jest.fn();
     expect(typeof loginWithGoogle).toBe('function');
@@ -91,8 +111,7 @@ describe('loginWithGoogle es una funcion ', () => {
     expect(loginConfig.loginWithGoogle).toHaveBeenCalledTimes(1);
   });
 });
-describe('loginWithTwitter es una funcion', () => {
-
+describe('verificar que la funcion sea llamada "twitter"', () => {
   it('loginWithTwitter es una funcion', () => {
     const loginWithTwitter = jest.fn();
     expect(typeof loginWithTwitter).toBe('function');
@@ -113,8 +132,13 @@ describe('loginWithTwitter es una funcion', () => {
     const buttonTwitter = DOM.querySelector('.buttontwitter');
     buttonTwitter.click();
     expect(loginConfig.loginWithTwitter).toHaveBeenCalledTimes(1);
-describe('loginWithGithub es una funcion', () => {
-
+    setTimeout((done) => {
+      expect(navigateTo).toHaveBeenLastCalledWith('/muro');
+      done();
+    });
+  });
+});
+describe('verificar que la funcion sea llamada "github"', () => {
   it('loginWithGithub es una funcion', () => {
     const loginWithGithub = jest.fn();
     expect(typeof loginWithGithub).toBe('function');

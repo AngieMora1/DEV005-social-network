@@ -35,8 +35,6 @@ const login = (navigateTo) => {
     e.preventDefault();
     const email = document.getElementById('loginCorreo').value;
     const password = document.getElementById('loginContra').value;
-    const loginCorreo = formularioLogin.querySelector('.loginCorreo');
-    const loginContra = formularioLogin.querySelector('.loginContra');
     const correoMensaje = formularioLogin.querySelector('.correo-mensaje');
     const contraMensaje = formularioLogin.querySelector('.contra-mensaje');
     loginConfig(email, password)
@@ -44,14 +42,36 @@ const login = (navigateTo) => {
         // console.log(email, password);
         navigateTo('/muro');
       })
-      .catch(() => {
-        if (loginCorreo.value === '' || loginContra.value === '') {
+      .catch((error) => {
+        //! CAMBIAR LOS IF A LA FUNCION
+
+        const expresiones = {
+          contra: /^.{6,}$/, // 6 a 12 digitos.
+          correo: /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/,
+        };
+
+        if (email === '') {
           correoMensaje.textContent = 'Ingresar correo';
           correoMensaje.style.color = 'red';
-          contraMensaje.textContent = 'Ingresar contraseña';
-          contraMensaje.style.color = 'red';
-          loginCorreo.focus();
+          if (password === '') {
+            contraMensaje.textContent = 'Ingresar contraseña';
+            contraMensaje.style.color = 'red';
+          }
+        } else {
+          if (expresiones.correo.test(email)) {
+            correoMensaje.textContent = '';
+          } else {
+            correoMensaje.textContent = 'Correo inválido';
+            correoMensaje.style.color = 'red';
+          }
+          if (expresiones.contra.test(password)) {
+            contraMensaje.textContent = '';
+          } else {
+            contraMensaje.textContent = 'Contraseña de 6 digitos';
+            contraMensaje.style.color = 'red';
+          }
         }
+        return error.code;
       });
   });
   return formularioLogin;

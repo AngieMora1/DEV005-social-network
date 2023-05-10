@@ -83,7 +83,7 @@ header .icon_exit i{
   display: flex;
   position: relative;
   align-items: center;
-  background-color: white;
+  background-color:white;
   margin: 20px;
   height: 80px;
   width: 45%;
@@ -531,8 +531,7 @@ header .icon_exit i{
     right: 0;
     padding: 2px 2px 0px;
     border-color: white;
-    position: absolute;
-    z-index: 4;   
+    position: absolute;   
   }
 
   .container-options{

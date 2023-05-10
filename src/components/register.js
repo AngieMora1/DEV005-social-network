@@ -27,7 +27,6 @@ const register = (navigateTo) => {
 
   // TODO: botón para registrar
   const buttonSaveInformation = formularioRegister.querySelector('.buttonSaveInformation');
-  // quite el ('click', async (e)
   buttonSaveInformation.addEventListener('click', async (e) => {
     e.preventDefault();
     const email = formularioRegister.querySelector('#emailregister').value;

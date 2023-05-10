@@ -25,36 +25,32 @@ function muro(navigateTo) {
   </header>
   <main>
   
-  <div class='create-post'> 
-  <button class='open-popup'>¿Qué receta quieres compartir hoy?</button>
-  </div>
-
-  <div class='pop-up' id='pop-up'>
-  <div class='wrapper'>
-  <section class='post'>
-  <button class='cerrar-post'><i class='bx bx-x'></i></button>
-
-  <form action='#' class='form-post' id='form-post'>
-  <h2>Crear Post</h2>
-  <div class='content-post'>
-  <div class='detail-post'>
-  <p>Food Match</p>
-  <div class='privacy'>
-  <i class='bx bx-user-pin' ></i>
-  <span>amigos</span>
-  <i class='bx bx-caret-down'></i>
-  </div>
-  </div>
-  </div>
-  <textarea id='textarea-post' placeholder='Descripción del post'></textarea>
-  <button class='publicar-post' type='submit' >Guardar</button>
-  </form>
-
-  </section>
+    <div class='create-post'> 
+      <button class='open-popup'>¿Qué receta quieres compartir hoy?</button>
+    </div>
+    <div class='pop-up' id='pop-up'>
+      <div class='wrapper'>
+    <section class='post'>
+      <button class='cerrar-post'><i class='bx bx-x'></i></button>
+      <form action='#' class='form-post' id='form-post'>
+      <h2>Crear Post</h2>
+      <div class='content-post'>
+        <div class='detail-post'>
+        <p>Food Match</p>
+          <div class='privacy'>
+            <i class='bx bx-user-pin' ></i>
+            <span>amigos</span>
+            <i class='bx bx-caret-down'></i>
+          </div>
+        </div>
+      </div>
+    <textarea id='textarea-post' placeholder='Descripción del post :D'> </textarea>
+      <button class='publicar-post' type='submit' >Guardar</button>
+      </form>
+    </section>
   </div>
   </div>
-
-  <div id='tasks-container' class='tasks-container'></div>
+    <div id='tasks-container' class='tasks-container'></div>
   </main>
   `;
 
@@ -71,9 +67,9 @@ function muro(navigateTo) {
     const openPopup = muroDiv.querySelector('.open-popup');
     openPopup.addEventListener('click', () => {
       const popUp = muroDiv.querySelector('.pop-up');
-      // const button = muroDiv.querySelector('.open-popup');
+      const button = muroDiv.querySelector('.open-popup');
       const cerrarPost = muroDiv.querySelector('.cerrar-post');
-      openPopup.addEventListener('click', () => {
+      button.addEventListener('click', () => {
         popUp.style.display = 'block';
       });
       cerrarPost.addEventListener('click', () => {
@@ -109,25 +105,20 @@ function muro(navigateTo) {
         <div class='dropdown'>
         <button class='btn-menu'><i class='bx bx-dots-horizontal-rounded'></i></button>
         <h3>${task.username.split('@')[0]}</h3>
-
         <div class='container-options'>
         <button class='btn-delete' data-id='${doc.id}'>Eliminar</button>
         <button class='btn-edit' data-id='${doc.id}'>Editar</button>
         </div>
-
         </div>
-
         <div class='body-description'>
         <p class='dateFormat'>${task.date}</p>
         <p>${task.description}</p>
         </div>
-
         <div class='reactions'>
         <button class='btn-like' data-id='${doc.id}' data-liked='${task.likes.includes(auth.currentUser.uid)}'>
         </button> 
         <span class='count-like'> ${task.likes.length || ''}</span>
         </div>
-
         </div>
           `;
     });
@@ -140,6 +131,9 @@ function muro(navigateTo) {
     const btnDelete = tasksContainer.querySelectorAll('.btn-delete');
     btnDelete.forEach((btn) => {
       btn.addEventListener('click', (event) => {
+        if (window.confirm('¿Quieres eliminar la receta?')) {
+          deleteTask(event.target.dataset.id);
+        }
         if (window.confirm('¿Quieres eliminar la receta?')) {
           deleteTask(event.target.dataset.id);
         }

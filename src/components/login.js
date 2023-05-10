@@ -7,8 +7,8 @@ const login = (navigateTo) => {
   formularioLogin.innerHTML = '';
   formularioLogin.innerHTML += `
   <div class="loginDiv">
-  <button class='btn-regresar'><i class='bx bx-chevron-left'></i></button> 
-  <div class="imgLogin"> 
+  <button class='btn-regresar'><i class='bx bx-chevron-left'></i></button>
+  <div class="imgLogin">
    <h2 class="messageLogin">Iniciar Sesión</h2>
    </div>
    <form class="credencialesdiv" id="formulario">
@@ -16,7 +16,7 @@ const login = (navigateTo) => {
     <p class='correo-mensaje'></p>
      <input type="password" class="loginContra" id="loginContra" placeholder="Contraseña" required>
      <p class='contra-mensaje'></p>
-      <button class="buttonReturn" type="submit">Ingresar</button> 
+      <button class="buttonReturn" type="submit">Ingresar</button>
    </form>
    <span class="mensajelogin"> ¿No tienes una cuenta?
    <strong class="efecto-after">Regístrate ahora</strong></span>
@@ -29,7 +29,6 @@ const login = (navigateTo) => {
   btnRegresar.addEventListener('click', () => {
     navigateTo('/');
   });
-
   const buttonReturn = formularioLogin.querySelector('.buttonReturn');
   buttonReturn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -39,7 +38,6 @@ const login = (navigateTo) => {
     const contraMensaje = formularioLogin.querySelector('.contra-mensaje');
     loginConfig(email, password)
       .then(() => {
-        // console.log(email, password);
         navigateTo('/muro');
       })
       .catch((error) => {
@@ -76,4 +74,5 @@ const login = (navigateTo) => {
   });
   return formularioLogin;
 };
+
 export default login;

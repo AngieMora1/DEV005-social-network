@@ -25,32 +25,32 @@ const muro = (navigateTo) => {
   </header>
   <main>
   
-  <div class='create-post'> 
-  <button class='open-popup'>¿Qué receta quieres compartir hoy?</button>
+    <div class='create-post'> 
+      <button class='open-popup'>¿Qué receta quieres compartir hoy?</button>
+    </div>
+    <div class='pop-up' id='pop-up'>
+      <div class='wrapper'>
+    <section class='post'>
+      <button class='cerrar-post'><i class='bx bx-x'></i></button>
+      <form action='#' class='form-post' id='form-post'>
+      <h2>Crear Post</h2>
+      <div class='content-post'>
+        <div class='detail-post'>
+        <p>Food Match</p>
+          <div class='privacy'>
+            <i class='bx bx-user-pin' ></i>
+            <span>amigos</span>
+            <i class='bx bx-caret-down'></i>
+          </div>
+        </div>
+      </div>
+    <textarea id='textarea-post' placeholder='Descripción del post :D'> </textarea>
+      <button class='publicar-post' type='submit' >Guardar</button>
+      </form>
+    </section>
   </div>
-  <div class='pop-up' id='pop-up'>
-  <div class='wrapper'>
-  <section class='post'>
-  <button class='cerrar-post'><i class='bx bx-x'></i></button>
-  <form action='#' class='form-post' id='form-post'>
-  <h2>Crear Post</h2>
-  <div class='content-post'>
-  <div class='detail-post'>
-  <p>Food Match</p>
-  <div class='privacy'>
-  <i class='bx bx-user-pin' ></i>
-  <span>amigos</span>
-  <i class='bx bx-caret-down'></i>
   </div>
-  </div>
-  </div>
-  <textarea id='textarea-post' placeholder='Descripción del post :D'></textarea>
-  <button class='publicar-post' type='submit' >Guardar</button>
-  </form>
-  </section>
-  </div>
-  </div>
-  <div id='tasks-container' class='tasks-container'></div>
+    <div id='tasks-container' class='tasks-container'></div>
   </main>
   `;
 
@@ -131,7 +131,9 @@ const muro = (navigateTo) => {
     const btnDelete = tasksContainer.querySelectorAll('.btn-delete');
     btnDelete.forEach((btn) => {
       btn.addEventListener('click', (event) => {
-        deleteTask(event.target.dataset.id);
+        if (window.confirm('¿Quieres eliminar la receta?')) {
+          deleteTask(event.target.dataset.id);
+        }
       });
     });
 

@@ -12,7 +12,7 @@ const register = (navigateTo) => {
     <h2 class='menssageRegisterRouter'>Regístrate</h2>
    </div>
     <form class='infoRegister' id='formulario'>
-      <input type='email' class='emailRegister' id='emailregister' placeholder='Iniciar sesión' required> 
+      <input type='email' class='emailRegister' id='emailregister' placeholder='Correo Electrónico' required> 
       <p class='correo-mensaje'></p>
         <input type='password' class='passwordRegister' id='passwordregister' placeholder='Contraseña' required>
         <p class='contra-mensaje'></p>
@@ -22,7 +22,7 @@ const register = (navigateTo) => {
 
   const btnRegresar = formularioRegister.querySelector('.btn-regresar');
   btnRegresar.addEventListener('click', () => {
-    navigateTo('/login');
+    navigateTo('/');
   });
 
   // TODO: botón para registrar
@@ -30,12 +30,8 @@ const register = (navigateTo) => {
   // quite el ('click', async (e)
   buttonSaveInformation.addEventListener('click', async (e) => {
     e.preventDefault();
-    /* const email = document.getElementsByClassName('emailregister').value;
-    const password = document.getElementsByClassName('passwordregister').value; */
     const email = formularioRegister.querySelector('#emailregister').value;
     const password = formularioRegister.querySelector('#passwordregister').value;
-    // const emailRegister = formularioRegister.querySelector('.emailRegister');
-    // const passwordregister = formularioRegister.querySelector('.passwordregister');
     const correoMensaje = formularioRegister.querySelector('.correo-mensaje');
     const contraMensaje = formularioRegister.querySelector('.contra-mensaje');
     registerUser(email, password)
@@ -45,17 +41,32 @@ const register = (navigateTo) => {
       })
       .catch((error) => {
         //! CAMBIAR LOS IF A LA FUNCION
-        if (email === '' || password === '') {
+
+        const expresiones = {
+          contra: /^.{6,}$/, // 6 a 12 digitos.
+          correo: /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/,
+        };
+
+        if (email === '') {
           correoMensaje.textContent = 'Ingresar correo';
           correoMensaje.style.color = 'red';
-          contraMensaje.textContent = 'Ingresar contraseña';
-          contraMensaje.style.color = 'red';
-        } else if (error.code === 'auth/email-already-in-user') {
-          correoMensaje.textContent = 'Correo en uso';
-        } else if (error.code === 'auth/invalid-email') {
-          correoMensaje.textContent = 'Correo inválido';
-        } else if (error.code === 'auth/weak-password') {
-          contraMensaje.textContent = 'Contraseña muy corta';
+          if (password === '') {
+            contraMensaje.textContent = 'Ingresar contraseña';
+            contraMensaje.style.color = 'red';
+          }
+        } else {
+          if (expresiones.correo.test(email)) {
+            correoMensaje.textContent = '';
+          } else {
+            correoMensaje.textContent = 'Correo inválido';
+            correoMensaje.style.color = 'red';
+          }
+          if (expresiones.contra.test(password)) {
+            contraMensaje.textContent = '';
+          } else {
+            contraMensaje.textContent = 'Contraseña de 6 digitos';
+            contraMensaje.style.color = 'red';
+          }
         }
         return error;
       });

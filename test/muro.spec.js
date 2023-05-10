@@ -4,7 +4,6 @@
 // import * as firebaseAuth from 'firebase/app';
 import muro from '../src/components/muro.js';
 
-
 jest.mock('firebase/auth', () => ({
   __esModule: true, //    <----- this __esModule: true is important
   ...jest.requireActual('firebase/auth'),
@@ -22,7 +21,6 @@ describe('Testeando muro.js', () => {
       expect(salirAhora).not.toBe(null);
       done();
     });
-
   });
   it('que exista el div pop-up', () => {
     const DOM = document.createElement('div');

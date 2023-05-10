@@ -46,7 +46,7 @@ function muro(navigateTo) {
   </div>
   </div>
   </div>
-  <textarea id='textarea-post' placeholder='Descripción del post :D'> </textarea>
+  <textarea id='textarea-post' placeholder='Descripción del post'></textarea>
   <button class='publicar-post' type='submit' >Guardar</button>
   </form>
 
@@ -125,7 +125,7 @@ function muro(navigateTo) {
         <div class='reactions'>
         <button class='btn-like' data-id='${doc.id}' data-liked='${task.likes.includes(auth.currentUser.uid)}'>
         </button> 
-        <span class='count-like'> ${task.likes.length}</span>
+        <span class='count-like'> ${task.likes.length || ''}</span>
         </div>
 
         </div>
@@ -140,7 +140,9 @@ function muro(navigateTo) {
     const btnDelete = tasksContainer.querySelectorAll('.btn-delete');
     btnDelete.forEach((btn) => {
       btn.addEventListener('click', (event) => {
-        deleteTask(event.target.dataset.id);
+        if (window.confirm('¿Quieres eliminar la receta?')) {
+          deleteTask(event.target.dataset.id);
+        }
       });
     });
 
@@ -191,6 +193,7 @@ function muro(navigateTo) {
     // console.log(description);
     if (!editStatus) {
       saveTask(description);
+      formPost.reset();
     } else {
       updateTask(id, { description });
       editStatus = false;

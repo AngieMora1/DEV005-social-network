@@ -34,16 +34,6 @@ function muro(navigateTo) {
       <button class='cerrar-post'><i class='bx bx-x'></i></button>
       <form action='#' class='form-post' id='form-post'>
       <h2>Crear Post</h2>
-      <div class='content-post'>
-        <div class='detail-post'>
-        <p>Food Match</p>
-          <div class='privacy'>
-            <i class='bx bx-user-pin' ></i>
-            <span>amigos</span>
-            <i class='bx bx-caret-down'></i>
-          </div>
-        </div>
-      </div>
     <textarea id='textarea-post' placeholder='Descripción del post :D'> </textarea>
       <button class='publicar-post' type='submit' >Guardar</button>
       </form>
@@ -69,10 +59,16 @@ function muro(navigateTo) {
       const popUp = muroDiv.querySelector('.pop-up');
       const button = muroDiv.querySelector('.open-popup');
       const cerrarPost = muroDiv.querySelector('.cerrar-post');
+      const publicarPost = muroDiv.querySelector('.publicar-post');
+      const formPost = muroDiv.querySelector('.form-post');
       button.addEventListener('click', () => {
         popUp.style.display = 'block';
+        formPost['textarea-post'].value = '';
       });
       cerrarPost.addEventListener('click', () => {
+        popUp.style.display = 'none';
+      });
+      publicarPost.addEventListener('click', () => {
         popUp.style.display = 'none';
       });
       window.addEventListener('click', (e) => {
@@ -122,7 +118,6 @@ function muro(navigateTo) {
         </div>
           `;
     });
-
     // en el parametro event se puede resumir debido a q todos
     // los elementos son objetos, esto es de la siguiente manera:
     // ({target: {dataset}})
@@ -134,9 +129,6 @@ function muro(navigateTo) {
         if (window.confirm('¿Quieres eliminar la receta?')) {
           deleteTask(event.target.dataset.id);
         }
-        if (window.confirm('¿Quieres eliminar la receta?')) {
-          deleteTask(event.target.dataset.id);
-        }
       });
     });
 
@@ -145,8 +137,12 @@ function muro(navigateTo) {
       btn.addEventListener('click', async (event) => {
         const cerrarPost = muroDiv.querySelector('.cerrar-post');
         const popUp = muroDiv.querySelector('.pop-up');
+        const publicarPost = muroDiv.querySelector('.publicar-post');
         popUp.style.display = 'block';
         cerrarPost.addEventListener('click', () => {
+          popUp.style.display = 'none';
+        });
+        publicarPost.addEventListener('click', () => {
           popUp.style.display = 'none';
         });
         window.addEventListener('click', (e) => {
@@ -187,7 +183,7 @@ function muro(navigateTo) {
     // console.log(description);
     if (!editStatus) {
       saveTask(description);
-      formPost.reset();
+      formPost['textarea-post'].value = '';
     } else {
       updateTask(id, { description });
       editStatus = false;

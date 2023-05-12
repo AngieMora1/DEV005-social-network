@@ -34,16 +34,6 @@ const muro = (navigateTo) => {
       <button class='cerrar-post'><i class='bx bx-x'></i></button>
       <form action='#' class='form-post' id='form-post'>
       <h2>Crear Post</h2>
-      <div class='content-post'>
-        <div class='detail-post'>
-        <p>Food Match</p>
-          <div class='privacy'>
-            <i class='bx bx-user-pin' ></i>
-            <span>amigos</span>
-            <i class='bx bx-caret-down'></i>
-          </div>
-        </div>
-      </div>
     <textarea id='textarea-post' placeholder='Descripción del post :D'> </textarea>
       <button class='publicar-post' type='submit' >Guardar</button>
       </form>
@@ -64,28 +54,6 @@ const muro = (navigateTo) => {
       });
   });
 
-  const interacionPopUp = () => {
-    const openPopup = muroDiv.querySelector('.open-popup');
-    openPopup.addEventListener('click', () => {
-      const popUp = muroDiv.querySelector('.pop-up');
-      const button = muroDiv.querySelector('.open-popup');
-      const cerrarPost = muroDiv.querySelector('.cerrar-post');
-      button.addEventListener('click', () => {
-        popUp.style.display = 'block';
-      });
-      cerrarPost.addEventListener('click', () => {
-        popUp.style.display = 'none';
-      });
-      window.addEventListener('click', (e) => {
-        if (e.target === popUp) {
-          popUp.style.display = 'none';
-        }
-      });
-    });
-  };
-
-  interacionPopUp();
-
   // contenedor publicaciones (mostrar datos)
   const tasksContainer = muroDiv.querySelector('.tasks-container');
   // consulta asíncrona
@@ -102,24 +70,24 @@ const muro = (navigateTo) => {
       const task = doc.data();
       html += `
         <div class='publicaciones'>
-        <div class='dropdown'>
-        <button class='btn-menu'><i class='bx bx-dots-horizontal-rounded'></i></button>
-        <h3>${task.username.split('@')[0]}</h3>
-        <div class='container-options'>
-        <button class='btn-delete' data-id='${doc.id}'>Eliminar</button>
-        <button class='btn-edit' data-id='${doc.id}'>Editar</button>
-        </div>
-        </div>
-        <div class='body-description'>
-        <p class='dateFormat'>${task.date}</p>
-        <p>${task.description}</p>
-        </div>
-        <div class='reactions'>
-        <button class='btn-like' data-id='${doc.id}' data-liked='${task.likes.includes(auth.currentUser.uid)}'>
-        </button> 
-        <span class='count-like'> ${task.likes.length}</span>
-        </div>
-        </div>
+          <div class='dropdown'>
+              <button class='btn-menu'><i class='bx bx-dots-horizontal-rounded'></i></button>
+              <h3>${task.username.split('@')[0]}</h3>
+            <div class='container-options'>
+              <button class='btn-delete' data-id='${doc.id}'>Eliminar</button>
+              <button class='btn-edit' data-id='${doc.id}'>Editar</button>
+            </div>
+          </div>
+         <div class='body-description'>
+          <p class='dateFormat'>${task.date}</p>
+          <p>${task.description}</p>
+         </div>
+         <div class='reactions'>
+         <button class='btn-like' data-id='${doc.id}' data-liked='${task.likes.includes(auth.currentUser.uid)}'>
+         </button> 
+         <span class='count-like'> ${task.likes.length}</span>
+         </div>
+         </div>
           `;
     });
 
@@ -176,14 +144,46 @@ const muro = (navigateTo) => {
     });
   });
 
+  const interacionPopUp = () => {
+    const openPopup = muroDiv.querySelector('.open-popup');
+    openPopup.addEventListener('click', () => {
+      const popUp = muroDiv.querySelector('.pop-up');
+      const button = muroDiv.querySelector('.open-popup');
+      const cerrarPost = muroDiv.querySelector('.cerrar-post');
+      const publicarPost = muroDiv.querySelector('.publicar-post');
+      const formPost = muroDiv.querySelector('.form-post');
+      button.addEventListener('click', () => {
+        popUp.style.display = 'block';
+        formPost['textarea-post'].value = '';
+      });
+      cerrarPost.addEventListener('click', () => {
+        popUp.style.display = 'none';
+      });
+      publicarPost.addEventListener('click', () => {
+        const result = formPost['textarea-post'].value;
+        if (result === '') {
+          popUp.style.display = 'block';
+        } else {
+          popUp.style.display = 'none';
+        }
+      });
+      window.addEventListener('click', (e) => {
+        if (e.target === popUp) {
+          popUp.style.display = 'none';
+        }
+      });
+    });
+  };
+
+  interacionPopUp();
+
   const formPost = muroDiv.querySelector('.form-post');
-  // const publicarPost = muroDiv.querySelector('.publicar-post');
-  // const popUp = muroDiv.querySelector('.pop-up');
   formPost.addEventListener('submit', (e) => {
     e.preventDefault();
     const description = formPost['textarea-post'].value;
-    // console.log(description);
-    if (!editStatus) {
+    if (description === '') {
+      window.confirm('Debes llenar el espacio del texto');
+    } else if (!editStatus) {
       saveTask(description);
     } else {
       updateTask(id, { description });

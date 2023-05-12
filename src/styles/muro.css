@@ -83,7 +83,7 @@ header .icon_exit i{
   display: flex;
   position: relative;
   align-items: center;
-  background-color: var(--color-naranja);
+  background-color: white;
   margin: 20px;
   height: 80px;
   width: 45%;
@@ -101,14 +101,14 @@ header .icon_exit i{
   background: none;
   width: 100%;
   height: 100%;
-  border-radius: 7px;
   font-family: 'Poppins', sans-serif;
   background-color: white;
   cursor: pointer;
+  border-radius: 7px;
 }
 
-.open-popup:hover {
-  background-color: var(--color-naranja);
+.open-popup:hover{
+  background-color: #e9d1b3;
 }
 
 .pop-up{
@@ -128,7 +128,7 @@ header .icon_exit i{
   font-weight: 600;
   text-align: center;
   padding: 5px 0;
-  background-color: #F2B872;
+  background-color: var(--color-naranja);
   border-radius: 7px;
 }
 .post {
@@ -139,27 +139,42 @@ header .icon_exit i{
 
 .post .form-post{
   position: absolute;
-  justify-content: center;
-  align-items: center;
   top: 5%;
   margin: 40px 30px;
-  width: 50%;
+  width: 45%;
   background-color: white;
   border-radius: 7px;
   z-index: 3;
   padding: 10px;
 }
 
-.form-post .content-post .detail-post p{
+.post .form-post :where(.content-post, .detail-post .privacy){
   position: relative;
-  font-size: 17px;
-  font-weight: 500;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  
 }
+
 
 .reactions{
   grid-column: 1 / 3;
   grid-row: 3;
 }
+
+.reactions span{
+  position: relative;
+  bottom: 5px;
+}
+
+.detail-post .privacy span{
+  position: relative;
+  font-size: 13px;
+  margin-top: 1px;
+  font-weight: 500;
+}
+
+
 
 .detail-post .privacy i:last-child{
   position: relative;
@@ -173,13 +188,15 @@ header .icon_exit i{
   width: 100%;
   outline: none;
   font-size: 14px;
-  margin-top: 10px;
+  margin-bottom: 10px;
   min-height: 175px;
+  padding: 8px 10px;
   text-align: justify;
+  border-radius: 7px;
 }
 
 .container-options button{
-  background-color: var(--color-azul);
+  background-color: #e9d1b3;
   border: none;
   border-radius: 7px;
   padding: 3px;
@@ -200,13 +217,12 @@ header .icon_exit i{
 
 .cerrar-post{
   position: absolute;
-  top: 10.5%;
+  top: 12%;
   right: 28%;
   width: 5%;
   border: none;
   z-index: 999;
-  border-radius: 7px;
-  background-color: var(--color-naranja);
+  background-color: transparent;
   font-size: 22px;
   cursor: pointer;
 }
@@ -217,6 +233,7 @@ header .icon_exit i{
 }
 
 .form-post .publicar-post{
+  top: -6px;
   border: none;
   width: 100%;
   height: 50px;
@@ -282,14 +299,14 @@ header .icon_exit i{
 
 /* like */
 .btn-like {
-  background-image: url(../assets/icon/heart-regular-24.png);
+  background: url(../assets/icon/heart-regular-24.png);
   background-color: white;
   margin-top: 5px;
   border: none;
   width: 20px;
   height: 20px;
   background-size: contain;
-  left: 0;
+  cursor: pointer;
 }
 
 @media(max-width: 480px) {
@@ -319,6 +336,16 @@ header .icon_exit i{
     max-height: max-content;
   }
 
+  .open-popup{
+    text-align: center;
+    border: 0;
+    padding: 10px;
+    background: none;
+    width: 300px;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+  }
 
   .pop-up{
     position: fixed;
@@ -340,49 +367,13 @@ header .icon_exit i{
   }
 
   .post .form-post{
-    position: relative;
-    top: 100px;
-    width: 100%;
+    position: absolute;
+    top: 5%;
     margin: 40px 30px;
-    background-color: var(--color-azul);
+    width: 90%;
     border-radius: 7px;
     z-index: 3;
-  }
-
-  .post .form-post :where(.content-post, .detail-post .privacy){
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin: 10px;
-    
-  }
-
-  .post .form-post .content-post img{
-    position: relative;
-    max-width: 52px;
-  }
-
-  .post .form-post .content-post .detail-post{
-    position: relative;
-    margin: 3px 0 0 12px;
-  }
-
-  .form-post .content-post .detail-post p{
-    position: relative;
-    font-size: 17px;
-    font-weight: 500;
-  }
-
-  .form-post .content-post .detail-post .privacy{
-    position: relative;
-    max-width: 120px;
-    cursor: pointer;
-    font-size: 11px;
-    margin-top: 3px;
-    padding: 0 10px;
-    border-radius: 5px;
-    background: #e4e6eb;
-    justify-content: space-between; /* buscar otra .form-posta de separar*/
+    padding: 10px;
   }
 
   .reactions{
@@ -395,13 +386,6 @@ header .icon_exit i{
     bottom: 5px;
   }
 
-  .detail-post .privacy span{
-    position: relative;
-    font-size: 13px;
-    margin-top: 1px;
-    font-weight: 500;
-  }
-
   .btn-menu i{
     font-size: 20px;
   }
@@ -412,20 +396,8 @@ header .icon_exit i{
     margin-left: 1px;
   }
 
-  .post .form-post textarea{
-    position: relative;
-    resize: none;
-    width: 100%;
-    outline: none;
-    font-size: 14px;
-    margin-top: 10px;
-    min-height: 175px;
-    padding: 8px 10px;
-    text-align: justify;
-  }
-
   .container-options button{
-    background-color: var(--color-azul);
+    background-color: #e9d1b3;
     border: none;
     border-radius: 7px;
     padding: 3px;
@@ -436,26 +408,6 @@ header .icon_exit i{
     font-family: 'Poppins', sans-serif;
   }
 
-  .form-post textarea:valid ~ button{
-    position: relative;
-    color: black;
-    cursor: pointer;
-    background: var(--color-naranja);
-    font-weight: bold;
-  }
-
-  .cerrar-post{
-    position: absolute;
-    top: 141px;
-    right: 30px;
-    width: 10%;
-    border: none;
-    z-index: 999;
-    border-radius: 7px;
-    background-color: var(--color-naranja);
-    font-size: 22px;
-    cursor: pointer;
-  }
   .container{
     height: 100%;
     width: 100%;
@@ -471,30 +423,21 @@ header .icon_exit i{
     border-radius: 7px;
   }
 
+  .cerrar-post{
+    top: 11%;
+    right: 10%;
+    width: 5%;
+    font-size: 22px;
+    cursor: pointer;
+  }
+
   .btn-menu{
     border: none;
     background-color: white;
     right: 0;
     padding: 2px 2px 0px;
     border-color: white;
-    position: absolute;
-    z-index: 4;   
-  }
-
-  .container-options{
-    display: none;
-    position: absolute;
-    width: 75px;
-    height: 60px;
-    top: 20px;
-    background-color: white;
-    border-radius: 10px;
-  }
-
-  .btn-delete .btn-edit{
-    position: absolute;
-    align-items: center;
-    border: none;
+    position: absolute; 
   }
 
   .dropdown{
@@ -503,24 +446,13 @@ header .icon_exit i{
     grid-row: 1;
   }
 
+  .dropdown:hover .container-options{
+    display: block;
+  }
+
   .body-description{
     grid-column: 1 / 3;
     grid-row: 2;
   }
   
-  .dropdown:hover .container-options{
-    display: block;
-  }
-
-  /* like */
-  .btn-like {
-    background-image: url(../assets/icon/me-gusta.png);
-    background-color: white;
-    margin-top: 5px;
-    border: none;
-    width: 20px;
-    height: 20px;
-    background-size: contain;
-    left: 0;
-  }
 }

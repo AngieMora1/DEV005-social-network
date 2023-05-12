@@ -99,9 +99,6 @@ describe('Testeando botones de navegacion', () => {
 /**
  * @jest-environment jsdom
  */
-import register from '../src/components/register.js';
-import home from '../src/components/home.js';
-import * as registerConfig from '../src/lib/registerConfig.js';
 
 jest.mock('firebase/auth', () => ({
   __esModule: true, //    <----- this __esModule: true is important
@@ -110,7 +107,7 @@ jest.mock('firebase/auth', () => ({
 
 // TODO: Prueba unitaria de la función home
 // ! BUSCAR MATCHERS
-describe('Testeando home.js', () => {
+describe('Testear home.js', () => {
   it('home -> debería ser una función', () => {
     expect(typeof home).toBe('function');
   });
@@ -153,7 +150,7 @@ describe('Testeando home.js', () => {
 });
 
 // TODO: Prueba unitaria de la función register
-describe('Testeando register.js', () => {
+describe('Testea register.js', () => {
   it('register -> debería ser una función', () => {
     expect(typeof register).toBe('function');
   });
@@ -183,7 +180,7 @@ describe('Testeando register.js', () => {
     });
   });
 });
-describe('Testeando botones de navegacion', () => {
+describe('Testeo de botones de navegacion', () => {
   it('boton "Continuar con email" llame a la funcion navigateTo a la ruta /login', () => {
     const DOM = document.createElement('div');
     const navigateTo = jest.fn();

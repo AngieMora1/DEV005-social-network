@@ -551,7 +551,7 @@ box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     font-size: 18px;
     width: 90%;
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
     border-style: none;
     background-image:url(../assets/icon_email.png);
     background-repeat: no-repeat;
@@ -564,7 +564,7 @@ box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     font-size: 18px;
     width: 90%;
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
     border-style: none;
     background-image:url(../assets/icon_password.png);
     background-repeat: no-repeat;
@@ -601,14 +601,13 @@ box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   .registerDiv{
     position: relative;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     top: 20px;
     bottom: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 100%;
     margin: 10px auto 10px;
   }
 

@@ -85,7 +85,7 @@ const muro = (navigateTo) => {
          <div class='reactions'>
          <button class='btn-like' data-id='${doc.id}' data-liked='${task.likes.includes(auth.currentUser.uid)}'>
          </button> 
-         <span class='count-like'> ${task.likes.length}</span>
+         <span class='count-like'> ${task.likes.length || ''}</span>
          </div>
          </div>
           `;
@@ -182,7 +182,7 @@ const muro = (navigateTo) => {
     e.preventDefault();
     const description = formPost['textarea-post'].value;
     if (description === '') {
-      window.confirm('Debes llenar el espacio del texto');
+      window.confirm('Debes llenar el espacio de texto');
     } else if (!editStatus) {
       saveTask(description);
     } else {

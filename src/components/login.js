@@ -1,6 +1,6 @@
 import { loginConfig } from '../lib/loginConfig.js';
 
-function login(navigateTo) {
+const login = (navigateTo) => {
   const formularioLogin = document.createElement('div');
   formularioLogin.className = 'formularioLogin';
 
@@ -21,24 +21,19 @@ function login(navigateTo) {
    <span class="mensajelogin"> ¿No tienes una cuenta?
    <strong class="efecto-after">Regístrate ahora</strong></span>
   </div>`;
-
-  const btnRegresar = formularioLogin.querySelector('.btn-regresar');
-  btnRegresar.addEventListener('click', () => {
-    navigateTo('/');
-  });
-
   const mensajelogin = formularioLogin.querySelector('.mensajelogin');
   mensajelogin.addEventListener('click', () => {
     navigateTo('/register');
   });
-
+  const btnRegresar = formularioLogin.querySelector('.btn-regresar');
+  btnRegresar.addEventListener('click', () => {
+    navigateTo('/');
+  });
   const buttonReturn = formularioLogin.querySelector('.buttonReturn');
-  buttonReturn.addEventListener('click', async (e) => {
+  buttonReturn.addEventListener('click', (e) => {
     e.preventDefault();
     const email = document.getElementById('loginCorreo').value;
     const password = document.getElementById('loginContra').value;
-    const loginCorreo = formularioLogin.querySelector('.loginCorreo');
-    const loginContra = formularioLogin.querySelector('.loginContra');
     const correoMensaje = formularioLogin.querySelector('.correo-mensaje');
     const contraMensaje = formularioLogin.querySelector('.contra-mensaje');
     loginConfig(email, password)
@@ -46,25 +41,38 @@ function login(navigateTo) {
         navigateTo('/muro');
       })
       .catch((error) => {
-        if (loginCorreo.value === '') {
+        //! CAMBIAR LOS IF A LA FUNCION
+
+        const expresiones = {
+          contra: /^.{6,}$/, // 6 a 12 digitos.
+          correo: /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/,
+        };
+
+        if (email === '') {
           correoMensaje.textContent = 'Ingresar correo';
           correoMensaje.style.color = 'red';
-          loginCorreo.focus();
-          if (loginContra.value === '') {
+          if (password === '') {
             contraMensaje.textContent = 'Ingresar contraseña';
             contraMensaje.style.color = 'red';
           }
         } else {
-          correoMensaje.textContent = 'Correo incorrecto';
-          correoMensaje.style.color = 'red';
-          contraMensaje.textContent = 'Contraseña incorrecto';
-          contraMensaje.style.color = 'red';
+          if (expresiones.correo.test(email)) {
+            correoMensaje.textContent = '';
+          } else {
+            correoMensaje.textContent = 'Correo inválido';
+            correoMensaje.style.color = 'red';
+          }
+          if (expresiones.contra.test(password)) {
+            contraMensaje.textContent = '';
+          } else {
+            contraMensaje.textContent = 'Contraseña de 6 digitos';
+            contraMensaje.style.color = 'red';
+          }
         }
         return error.code;
       });
   });
-
   return formularioLogin;
-}
+};
 
 export default login;

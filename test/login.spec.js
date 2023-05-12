@@ -5,8 +5,6 @@ import * as firebaseAuth from 'firebase/auth';
 import login from '../src/components/login.js';
 import home from '../src/components/home.js';
 import * as loginConfig from '../src/lib/loginConfig.js';
-// import home from '../src/components/home.js';
-// import home from '../src/components/muro.js';
 
 jest.mock('firebase/auth', () => ({
   __esModule: true, //    <----- this __esModule: true is important

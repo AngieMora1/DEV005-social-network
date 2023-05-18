@@ -7,19 +7,19 @@ const login = (navigateTo) => {
   formularioLogin.innerHTML = '';
   formularioLogin.innerHTML += `
   <div class="loginDiv">
-  <button class='btn-regresar'><i class='bx bx-chevron-left'></i></button>
-  <div class="imgLogin">
-   <h2 class="messageLogin">Iniciar Sesión</h2>
-   </div>
-   <form class="credencialesdiv" id="formulario">
-    <input type="email" class="loginCorreo" id="loginCorreo" placeholder="Correo Electrónico" required>
-    <p class='correo-mensaje'></p>
-     <input type="password" class="loginContra" id="loginContra" placeholder="Contraseña" required>
-     <p class='contra-mensaje'></p>
-      <button class="buttonReturn" type="submit">Ingresar</button>
-   </form>
-   <span class="mensajelogin"> ¿No tienes una cuenta?
-   <strong class="efecto-after">Regístrate ahora</strong></span>
+    <button class='btn-regresar'><i class='bx bx-chevron-left'></i></button> 
+    <div class="imgLogin"> 
+      <h2 class="messageLogin">Iniciar Sesión</h2>
+    </div>
+    <form class="credencialesdiv" id="formulario">
+      <input type="email" class="loginCorreo" id="loginCorreo" placeholder="Correo Electrónico" required>
+      <p class='correo-mensaje'></p>
+      <input type="password" class="loginContra" id="loginContra" placeholder="Contraseña" required>
+      <p class='contra-mensaje'></p>
+      <button class="buttonReturn" type="submit">Ingresar</button> 
+    </form>
+    <span class="mensajelogin"> ¿No tienes una cuenta?
+    <strong class="efecto-after">Regístrate ahora</strong></span>
   </div>`;
   const mensajelogin = formularioLogin.querySelector('.mensajelogin');
   mensajelogin.addEventListener('click', () => {
@@ -29,6 +29,7 @@ const login = (navigateTo) => {
   btnRegresar.addEventListener('click', () => {
     navigateTo('/');
   });
+
   const buttonReturn = formularioLogin.querySelector('.buttonReturn');
   buttonReturn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -41,10 +42,8 @@ const login = (navigateTo) => {
         navigateTo('/muro');
       })
       .catch((error) => {
-        //! CAMBIAR LOS IF A LA FUNCION
-
         const expresiones = {
-          contra: /^.{6,}$/, // 6 a 12 digitos.
+          contra: /^.{6,}$/,
           correo: /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/,
         };
 
@@ -74,5 +73,4 @@ const login = (navigateTo) => {
   });
   return formularioLogin;
 };
-
 export default login;

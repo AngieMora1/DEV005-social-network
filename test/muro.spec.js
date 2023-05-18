@@ -1,7 +1,6 @@
 /**
  * @jest-environment jsdom
  */
-// import * as firebaseAuth from 'firebase/app';
 import muro from '../src/components/muro.js';
 
 jest.mock('firebase/auth', () => ({

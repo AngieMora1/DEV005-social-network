@@ -437,7 +437,8 @@ header .icon_exit i{
     right: 0;
     padding: 2px 2px 0px;
     border-color: white;
-    position: absolute; 
+    position: absolute;
+    z-index: 4;   
   }
 
   .dropdown{

@@ -36,7 +36,6 @@ function home(navigateTo) {
   // Botón de twitter
   const buttontwitter = document.createElement('button');
   buttontwitter.className = 'buttontwitter';
-  // ! Logueo con twitter
   buttontwitter.addEventListener('click', () => {
     loginWithTwitter();
     onAuthStateChanged(auth, (user) => {
@@ -51,7 +50,6 @@ function home(navigateTo) {
   const buttongithub = document.createElement('button');
   buttongithub.type = 'button';
   buttongithub.className = 'buttongithub';
-  // ! Logueo con github
   buttongithub.addEventListener('click', () => {
     loginWithGithub();
     onAuthStateChanged(auth, (user) => {
@@ -71,8 +69,8 @@ function home(navigateTo) {
   buttongoogle.textContent = 'Continuar con Google';
   buttontwitter.textContent = 'Continuar con Twitter';
   buttongithub.textContent = 'Continuar con Github';
-  registrarAhora.innerHTML = `¿No tienes una cuenta?
-    <strong class='efecto-after'>Regístrate ahora</strong>`;
+  registrarAhora.innerHTML = ` ¿No tienes una cuenta?;
+  <strong class='efecto-after'>Regístrate ahora</strong>`;
   registrarAhora.addEventListener('click', () => {
     navigateTo('/register');
   });

@@ -1,4 +1,3 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import {
@@ -16,9 +15,6 @@ import {
   arrayRemove,
 } from 'firebase/firestore';
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
 // Configuración del proyecto
 const firebaseConfig = {
   apiKey: 'AIzaSyACdLyMpGhBbp5ogyQ2z2-GeDWz4orx4Z4',
@@ -29,15 +25,11 @@ const firebaseConfig = {
   appId: '1:655316254171:web:2bb64d10e33715580a7bfe',
 };
 
-// Inicializacion Firebase console.log(app)
+// Inicializacion Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-// Inicializar la base de datos en tiempo real y obtener una referencia al servicio
-// Conexión a la base de datos
+// Inicializar y onexión a la base de datos
 const db = getFirestore(app);
-// Conexión a RealTime Database
-// ?? export const database = getDatabase(app);
-// Guardar publicación en firestore
 
 export const saveTask = (description) => {
   let today = new Date();
@@ -57,8 +49,7 @@ export const saveTask = (description) => {
     likes: [],
     username: auth.currentUser.email,
   });
-  // nombre de la colección "post",
-  // donde se van a guardar los datos
+  // nombre de la colección "post"
 };
 
 // traer los post guardados en firestore

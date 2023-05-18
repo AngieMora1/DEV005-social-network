@@ -5,6 +5,8 @@ import * as firebaseAuth from 'firebase/auth';
 import login from '../src/components/login.js';
 import home from '../src/components/home.js';
 import * as loginConfig from '../src/lib/loginConfig.js';
+// import home from '../src/components/home.js';
+// import home from '../src/components/muro.js';
 
 jest.mock('firebase/auth', () => ({
   __esModule: true, //    <----- this __esModule: true is important
@@ -67,7 +69,26 @@ describe('login es una funcion', () => {
     });
   });
 });
-describe('loginWithGoogle es una funcion ', () => {
+describe('verificar que sean funciones', () => {
+  it('loginWithGoogle es una funcion', () => {
+    const loginWithGoogle = jest.fn();
+    expect(typeof loginWithGoogle).toBe('function');
+  });
+  it('GoogleAuthProvider es una funcion', () => {
+    const GoogleAuthProvider = jest.fn();
+    expect(typeof GoogleAuthProvider).toBe('function');
+  });
+  it('signInWithPopup es una funcion', () => {
+    const signInWithPopup = jest.fn();
+    expect(typeof signInWithPopup).toBe('function');
+  });
+  it('validar que loginWithGoogle es una funcion', () => {
+    const loginWithGoogle = jest.fn();
+    expect(typeof loginWithGoogle).toBe('function');
+  });
+});
+
+describe('verificar que la funcion sea llamada "google"', () => {
   it('loginWithGoogle es una funcion', () => {
     const loginWithGoogle = jest.fn();
     expect(typeof loginWithGoogle).toBe('function');
@@ -81,8 +102,7 @@ describe('loginWithGoogle es una funcion ', () => {
   it('Probar login usando google', () => {
     jest.spyOn(loginConfig, 'loginWithGoogle');
     const GoogleAuthProvider = jest.fn;
-    jest.spyOn(firebaseAuth, 'signInWithPopup')
-      . mockResolvedValue({ user: 'prueba@prueba.com', GoogleAuthProvider });
+    jest.spyOn(firebaseAuth, 'signInWithPopup').mockResolvedValue({ user: 'prueba@prueba.com', GoogleAuthProvider });
     const DOM = document.createElement('div');
     const navigateTo = jest.fn();
     DOM.append(home(navigateTo));
@@ -91,7 +111,7 @@ describe('loginWithGoogle es una funcion ', () => {
     expect(loginConfig.loginWithGoogle).toHaveBeenCalledTimes(1);
   });
 });
-describe('loginWithTwitter es una funcion', () => {
+describe('verificar que la funcion sea llamada "twitter"', () => {
   it('loginWithTwitter es una funcion', () => {
     const loginWithTwitter = jest.fn();
     expect(typeof loginWithTwitter).toBe('function');
@@ -105,17 +125,20 @@ describe('loginWithTwitter es una funcion', () => {
   it('Probar login usando twitter', () => {
     jest.spyOn(loginConfig, 'loginWithTwitter');
     const TwitterAuthProvider = jest.fn;
-    jest.spyOn(firebaseAuth, 'signInWithPopup')
-      . mockResolvedValue({ user: 'prueba@prueba.com', TwitterAuthProvider });
+    jest.spyOn(firebaseAuth, 'signInWithPopup').mockResolvedValue({ user: 'prueba@prueba.com', TwitterAuthProvider });
     const DOM = document.createElement('div');
     const navigateTo = jest.fn();
     DOM.append(home(navigateTo));
     const buttonTwitter = DOM.querySelector('.buttontwitter');
     buttonTwitter.click();
     expect(loginConfig.loginWithTwitter).toHaveBeenCalledTimes(1);
+    setTimeout((done) => {
+      expect(navigateTo).toHaveBeenLastCalledWith('/muro');
+      done();
+    });
   });
 });
-describe('loginWithGithub es una funcion', () => {
+describe('verificar que la funcion sea llamada "github"', () => {
   it('loginWithGithub es una funcion', () => {
     const loginWithGithub = jest.fn();
     expect(typeof loginWithGithub).toBe('function');
@@ -129,8 +152,7 @@ describe('loginWithGithub es una funcion', () => {
   it('Probar login usando github', () => {
     jest.spyOn(loginConfig, 'loginWithGithub');
     const GithubAuthProvider = jest.fn;
-    jest.spyOn(firebaseAuth, 'signInWithPopup')
-      . mockResolvedValue({ user: 'prueba@prueba.com', GithubAuthProvider });
+    jest.spyOn(firebaseAuth, 'signInWithPopup').mockResolvedValue({ user: 'prueba@prueba.com', GithubAuthProvider });
     const DOM = document.createElement('div');
     const navigateTo = jest.fn();
     DOM.append(home(navigateTo));

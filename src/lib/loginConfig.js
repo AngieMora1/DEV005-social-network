@@ -1,5 +1,3 @@
-// Acceso de usuarios existentes
-// https://firebase.google.com/docs/auth/web/start?hl=es-419#web-version-9_1
 import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
@@ -21,7 +19,7 @@ export const loginConfig = (email, password) => new Promise((resolve, reject) =>
     });
 });
 
-// TODO: Función loginwithGoogle para poder ingresar a la plataforma con correo de Google
+// TODO: Función de logeo con Google
 export const loginWithGoogle = () => new Promise((resolve, reject) => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)

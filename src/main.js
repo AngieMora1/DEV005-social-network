@@ -1,13 +1,8 @@
-// importar
 import home from './components/home.js';
 import error from './components/error404.js';
 import login from './components/login.js';
 import register from './components/register.js';
 import muro from './components/muro.js';
-
-import './lib/loginConfig.js'; // ???
-import './lib/registerConfig.js';// ???
-// Nombre: foodMatch
 
 const routes = [
   { path: '/', component: home },
